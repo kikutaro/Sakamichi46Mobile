@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace Sakamichi46Mobile
+namespace Sakamichi46Mobile.Nogizaka46
 {
-    public partial class App : Application
+    public partial class NogiDetailPage : ContentPage
     {
-        public App()
+        public NogiDetailPage()
         {
-            MainPage = new Nogizaka46.NogiMasterDetailPage();
+            InitializeComponent();
         }
     }
 }
