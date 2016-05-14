@@ -40,6 +40,15 @@
     </Compile>
     <Compile Include="Controller\IRestHandler.cs" />
     <Compile Include="Controller\NogiController.cs" />
+    <Compile Include="Keyakizaka46\KeyakiDetailPage.xaml.cs">
+      <DependentUpon>KeyakiDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Keyakizaka46\KeyakiMasterDetailPage.xaml.cs">
+      <DependentUpon>KeyakiMasterDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Keyakizaka46\KeyakiMasterPage.xaml.cs">
+      <DependentUpon>KeyakiMasterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Member.cs" />
     <Compile Include="Nogizaka46\NogiDetailPage.xaml.cs">
       <DependentUpon>NogiDetailPage.xaml</DependentUpon>
@@ -97,7 +106,24 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Keyakizaka46\KeyakiDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Keyakizaka46\KeyakiMasterDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Keyakizaka46\KeyakiMasterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.0.38-pre2\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.0.38-pre2\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
