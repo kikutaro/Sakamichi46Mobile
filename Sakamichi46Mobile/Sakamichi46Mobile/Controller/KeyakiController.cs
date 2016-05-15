@@ -3,12 +3,10 @@ using System.Collections.Generic;
 
 namespace Sakamichi46Mobile.Controller
 {
-    class NogiController : SakamichiController
+    class KeyakiController : SakamichiController
     {
-
-        public NogiController(string url) : base(url)
+        public KeyakiController(string url) : base(url)
         {
-
         }
 
         public override List<Member> GetAllProfile()

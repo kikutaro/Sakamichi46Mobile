@@ -17,7 +17,7 @@ namespace Sakamichi46Mobile.Nogizaka46
         {
             InitializeComponent();
 
-            NogiController nogi = new NogiController();
+            NogiController nogi = new NogiController("http://46api.sakamichi46.com/sakamichi46api/api/nogizaka46/profile");
             nogiListView.ItemsSource = new ObservableCollection<Member>(nogi.GetAllProfile());
         }
     }

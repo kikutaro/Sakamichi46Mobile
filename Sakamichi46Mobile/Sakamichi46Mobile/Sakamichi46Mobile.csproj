@@ -39,7 +39,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controller\IRestHandler.cs" />
+    <Compile Include="Controller\KeyakiController.cs" />
     <Compile Include="Controller\NogiController.cs" />
+    <Compile Include="Controller\SakamichiController.cs" />
     <Compile Include="Keyakizaka46\KeyakiDetailPage.xaml.cs">
       <DependentUpon>KeyakiDetailPage.xaml</DependentUpon>
     </Compile>
