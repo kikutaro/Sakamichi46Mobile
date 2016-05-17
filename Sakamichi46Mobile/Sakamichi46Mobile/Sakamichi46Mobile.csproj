@@ -42,6 +42,15 @@
     <Compile Include="Controller\KeyakiController.cs" />
     <Compile Include="Controller\NogiController.cs" />
     <Compile Include="Controller\SakamichiController.cs" />
+    <Compile Include="HiraganaKeyaki\HiraDetailPage.xaml.cs">
+      <DependentUpon>HiraDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HiraganaKeyaki\HiraMasterDetailPage.xaml.cs">
+      <DependentUpon>HiraMasterDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HiraganaKeyaki\HiraMasterPage.xaml.cs">
+      <DependentUpon>HiraMasterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Keyakizaka46\KeyakiDetailPage.xaml.cs">
       <DependentUpon>KeyakiDetailPage.xaml</DependentUpon>
     </Compile>
@@ -122,6 +131,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Keyakizaka46\KeyakiMasterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="HiraganaKeyaki\HiraDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="HiraganaKeyaki\HiraMasterDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="HiraganaKeyaki\HiraMasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

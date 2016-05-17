@@ -12,8 +12,8 @@ namespace Sakamichi46Mobile
     {
         public App()
         {
-            //MainPage = new Nogizaka46.NogiMasterDetailPage();
-            MainPage = new Keyakizaka46.KeyakiMasterDetailPage();
+            MainPage = new Nogizaka46.NogiMasterDetailPage();
+            //MainPage = new Keyakizaka46.KeyakiMasterDetailPage();
         }
     }
 }
