@@ -14,6 +14,7 @@ namespace Sakamichi46Mobile
         {
             MainPage = new Nogizaka46.NogiMasterDetailPage();
             //MainPage = new Keyakizaka46.KeyakiMasterDetailPage();
+            //MainPage = new HiraganaKeyaki.HiraMasterDetailPage();
         }
     }
 }

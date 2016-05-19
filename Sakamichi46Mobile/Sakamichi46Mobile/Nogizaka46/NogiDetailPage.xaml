@@ -3,30 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Sakamichi46Mobile.Nogizaka46.NogiDetailPage"
              Title="Detail">
-  <NavigationPage Title="ブログ">
-    <ContentPage>
-      Hello
+
+  <TabbedPage.Children>
+    <ContentPage Title="hoge">
+      
     </ContentPage>
-  </NavigationPage>
-  <NavigationPage Title="公式グッズ">
-    <ContentPage>
-      Goods
+    <ContentPage Title="foo">
+
     </ContentPage>
-  </NavigationPage>
-  <!--
-  <ContentPage Title="ブログ">
-    <ContentPage.Content>
-      <ScrollView>
-        view
-      </ScrollView>
-    </ContentPage.Content>
-  </ContentPage>
-  <ContentPage Title="公式グッズ">
-    <ContentPage.Content>
-      <ScrollView>
-        view
-      </ScrollView>
-    </ContentPage.Content>
-  </ContentPage>
-  -->
+  </TabbedPage.Children>
+  
+
 </TabbedPage>

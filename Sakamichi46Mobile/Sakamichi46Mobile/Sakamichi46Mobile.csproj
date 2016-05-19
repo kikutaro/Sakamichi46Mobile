@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controller\HiraController.cs" />
     <Compile Include="Controller\IRestHandler.cs" />
     <Compile Include="Controller\KeyakiController.cs" />
     <Compile Include="Controller\NogiController.cs" />

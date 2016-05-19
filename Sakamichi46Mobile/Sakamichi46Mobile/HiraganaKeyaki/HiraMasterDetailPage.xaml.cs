@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Sakamichi46Mobile.HiraganaKeyaki
 {
-    public partial class HiraMasterDetailPage : ContentPage
+    public partial class HiraMasterDetailPage : MasterDetailPage
     {
         public HiraMasterDetailPage()
         {
