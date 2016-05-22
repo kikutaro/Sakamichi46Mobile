@@ -4,9 +4,9 @@
              xmlns:local="clr-namespace:Sakamichi46Mobile;assembly=Sakamichi46Mobile"
              x:Class="Sakamichi46Mobile.Keyakizaka46.KeyakiMasterDetailPage">
   <MasterDetailPage.Master>
-    <local:Keyakizaka46.KeyakiMasterPage />
+    <local:Keyakizaka46.KeyakiMasterPage x:Name="keyakiMaster" />
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
-    <local:Keyakizaka46.KeyakiDetailPage />
+    <local:Keyakizaka46.KeyakiDetailPage x:Name="keyakiDetail" />
   </MasterDetailPage.Detail>
 </MasterDetailPage>

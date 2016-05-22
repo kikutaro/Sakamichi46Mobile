@@ -5,8 +5,8 @@
              Title="Detail">
 
   <TabbedPage.Children>
-    <ContentPage Title="hoge">
-      
+    <ContentPage Title="Blog">
+      <WebView x:Name="nogiWeb" Source="http://www.nogizaka46.com/smph/" />
     </ContentPage>
     <ContentPage Title="foo">
 

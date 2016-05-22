@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Sakamichi46Mobile.Keyakizaka46.KeyakiDetailPage"
              Title="Detail">
-  <Label Text="Keyaki Detail" VerticalOptions="Center" HorizontalOptions="Center" />
-</ContentPage>
+  <TabbedPage.Children>
+    <ContentPage Title="Blog">
+      <WebView x:Name="keyakiWeb" Source="http://www.keyakizaka46.com/mob/index.php?site=k46o" />
+    </ContentPage>
+    <ContentPage Title="foo">
+
+    </ContentPage>
+  </TabbedPage.Children>
+</TabbedPage>

@@ -4,9 +4,9 @@
              xmlns:local="clr-namespace:Sakamichi46Mobile;assembly=Sakamichi46Mobile"
              x:Class="Sakamichi46Mobile.Nogizaka46.NogiMasterDetailPage">
   <MasterDetailPage.Master>
-    <local:Nogizaka46.NogiMasterPage />
+    <local:Nogizaka46.NogiMasterPage x:Name="nogiMaster" />
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
-    <local:Nogizaka46.NogiDetailPage />
+    <local:Nogizaka46.NogiDetailPage x:Name="nogiDetail" />
   </MasterDetailPage.Detail>
 </MasterDetailPage>

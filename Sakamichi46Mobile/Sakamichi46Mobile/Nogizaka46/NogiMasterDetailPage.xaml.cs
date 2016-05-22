@@ -13,6 +13,12 @@ namespace Sakamichi46Mobile.Nogizaka46
         public NogiMasterDetailPage()
         {
             InitializeComponent();
+
+            nogiMaster.NogiListView.ItemSelected += (o, e) =>
+            {
+                IsPresented = false;
+                nogiDetail.ChangeWebPage((Member)e.SelectedItem);
+            };
         }
     }
 }

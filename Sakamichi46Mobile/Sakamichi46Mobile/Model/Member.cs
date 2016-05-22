@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Sakamichi46Mobile
 {
-    class Member
+    public class Member
     {
         public string name { get; set; }
         public string birthday { get; set; }
         public string bloodType { get; set; }
         public string constellation { get; set; }
         public string profilePhotoUri { get; set; }
+        public string blogUri { get; set; }
     }
 }

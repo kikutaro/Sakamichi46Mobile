@@ -14,5 +14,10 @@ namespace Sakamichi46Mobile.Nogizaka46
         {
             InitializeComponent();
         }
+
+        public void ChangeWebPage(Member selectedMember)
+        {
+            nogiWeb.Source = selectedMember.blogUri;
+        }
     }
 }

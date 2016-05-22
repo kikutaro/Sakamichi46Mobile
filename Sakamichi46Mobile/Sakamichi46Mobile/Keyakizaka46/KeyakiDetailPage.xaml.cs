@@ -8,11 +8,16 @@ using Xamarin.Forms;
 
 namespace Sakamichi46Mobile.Keyakizaka46
 {
-    public partial class KeyakiDetailPage : ContentPage
+    public partial class KeyakiDetailPage : TabbedPage
     {
         public KeyakiDetailPage()
         {
             InitializeComponent();
+        }
+
+        public void ChangeWebPage(Member selectedMember)
+        {
+            keyakiWeb.Source = selectedMember.blogUri;
         }
     }
 }

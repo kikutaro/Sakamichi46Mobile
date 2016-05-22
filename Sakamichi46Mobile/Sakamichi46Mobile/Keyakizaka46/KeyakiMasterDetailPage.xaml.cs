@@ -13,6 +13,12 @@ namespace Sakamichi46Mobile.Keyakizaka46
         public KeyakiMasterDetailPage()
         {
             InitializeComponent();
+
+            keyakiMaster.KeyakiListView.ItemSelected += (o, e) =>
+            {
+                IsPresented = false;
+                keyakiDetail.ChangeWebPage((Member)e.SelectedItem);
+            };
         }
     }
 }
