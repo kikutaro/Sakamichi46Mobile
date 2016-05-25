@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sakamichi46Mobile.Menu">
+  <StackLayout>
+    <Button Text="乃木坂46" TextColor="Purple" />
+    <Button Text="欅坂46" TextColor="Green" />
+  </StackLayout>
+</ContentPage>
