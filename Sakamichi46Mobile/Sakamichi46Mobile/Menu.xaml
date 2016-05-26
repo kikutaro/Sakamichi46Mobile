@@ -2,8 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Sakamichi46Mobile.Menu">
-  <StackLayout>
-    <Button Text="乃木坂46" TextColor="Purple" />
-    <Button Text="欅坂46" TextColor="Green" />
-  </StackLayout>
+  
+  <Grid RowSpacing="10" ColumnSpacing="10">
+    
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="150" />
+      <RowDefinition Height="75" />
+      <RowDefinition Height="75" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="150" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    
+    <Button x:Name="btnNogi"
+            Text="乃木坂46"
+            BackgroundColor="Purple"
+            TextColor="White"
+            Grid.Row="1" Grid.Column="1" />
+    <Button x:Name="btnKeyaki"
+            Text="欅坂46" 
+            BackgroundColor="Green"
+            TextColor="White"
+            Grid.Row="2" Grid.Column="1"/>
+    <Button x:Name="btnHira"
+            Text="ひらがなけやき"
+            BackgroundColor="Green"
+            TextColor="White"
+            Grid.Row="3" Grid.Column="1"/>
+  </Grid>
+  
 </ContentPage>

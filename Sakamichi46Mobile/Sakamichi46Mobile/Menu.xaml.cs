@@ -13,6 +13,21 @@ namespace Sakamichi46Mobile
         public Menu()
         {
             InitializeComponent();
+
+            btnNogi.Clicked += (o, e) =>
+            {
+                Navigation.PushModalAsync(new Nogizaka46.NogiMasterDetailPage());
+            };
+
+            btnKeyaki.Clicked += (o, e) =>
+            {
+                Navigation.PushModalAsync(new Keyakizaka46.KeyakiMasterDetailPage());
+            };
+
+            btnHira.Clicked += (o, e) =>
+            {
+                Navigation.PushModalAsync(new HiraganaKeyaki.HiraMasterDetailPage());
+            };
         }
     }
 }

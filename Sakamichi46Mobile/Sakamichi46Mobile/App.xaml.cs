@@ -13,10 +13,7 @@ namespace Sakamichi46Mobile
         public App()
         {
             Resources = new Xamarin.Forms.Themes.LightThemeResources();
-            MainPage = new Menu();
-            //MainPage = new Nogizaka46.NogiMasterDetailPage();
-            //MainPage = new Keyakizaka46.KeyakiMasterDetailPage();
-            //MainPage = new HiraganaKeyaki.HiraMasterDetailPage();
+            MainPage = new NavigationPage(new Menu());
         }
     }
 }
