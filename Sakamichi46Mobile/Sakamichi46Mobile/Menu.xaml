@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Sakamichi46Mobile.Menu">
-  
+
   <Grid RowSpacing="10" ColumnSpacing="10">
     
     <Grid.RowDefinitions>
@@ -18,7 +18,9 @@
       <ColumnDefinition Width="150" />
       <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
-    
+
+    <ActivityIndicator x:Name="nogiIndicator"
+                       Grid.Row="0" Grid.Column="0" />
     <Button x:Name="btnNogi"
             Text="乃木坂46"
             BackgroundColor="Purple"

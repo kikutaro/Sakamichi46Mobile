@@ -4,35 +4,54 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Sakamichi46Mobile.Constant;
 
 namespace Sakamichi46Mobile.Controller
 {
-    abstract class SakamichiController : IRestHandler<Member>
+    public abstract class SakamichiController : IRestHandler<Member>
     {
         protected HttpClient httpClient;
 
         protected List<Member> member;
 
-        private string url;
+        private Uri baseUrl;
 
-        protected SakamichiController(string url)
+        protected SakamichiController(string baseUrl)
         {
-            this.url = url;
-            httpClient = new HttpClient();
-            RunAsync().Wait();
+            this.baseUrl = new Uri(baseUrl);
+            httpClient = new HttpClient(); 
         }
 
         public abstract List<Member> GetAllProfile();
+
+        
         public abstract Member GetProfile(string name);
 
-        public async Task RunAsync()
+        public async Task<List<Member>> RunAsync()
         {
-            var response = httpClient.GetAsync(url).Result;
+            Uri profileUrl = new Uri(baseUrl, UrlConst.PROFILE);
+            var response = httpClient.GetAsync(profileUrl.AbsoluteUri).Result;
             if (response.IsSuccessStatusCode)
             {
                 var ret = await response.Content.ReadAsStringAsync();
                 member = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Member>>(ret);
             }
+            await Task.Delay(5000);
+            return member;
+        }
+
+        public async Task<string> GetOfficialBlog()
+        {
+            Uri blogUrl = new Uri(baseUrl, UrlConst.BLOG);
+            var response = httpClient.GetAsync(blogUrl.AbsoluteUri).Result;
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<String> GetOfficialGoods()
+        {
+            Uri goodsUrl = new Uri(baseUrl, UrlConst.GOODS);
+            var response = httpClient.GetAsync(goodsUrl.AbsoluteUri).Result;
+            return await response.Content.ReadAsStringAsync();
         }
     }
 }

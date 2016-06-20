@@ -10,6 +10,8 @@ namespace Sakamichi46Mobile.Controller
     {
         T GetProfile(string name);
 
-        List<T> GetAllProfile();   
+        List<T> GetAllProfile();
+
+        Task<string> GetOfficialBlog();
     }
 }
