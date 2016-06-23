@@ -11,6 +11,8 @@ namespace Sakamichi46Mobile.Nogizaka46
 {
     public partial class NogiDetailPage : TabbedPage
     {
+        public Member selectedMember { get; set; }
+
         public NogiDetailPage()
         {
             InitializeComponent();
@@ -24,7 +26,20 @@ namespace Sakamichi46Mobile.Nogizaka46
 
         public void ChangeWebPage(Member selectedMember)
         {
-            nogiWebBlog.Source = selectedMember.blogUri;
+            if(selectedMember != null)
+            {
+                this.selectedMember = selectedMember;
+            } 
+
+            int tabIdx = Children.IndexOf(CurrentPage);
+            if(tabIdx == 0)
+            {
+                nogiWebBlog.Source = this.selectedMember.blogUri;
+            }
+            else if(tabIdx == 1)
+            {
+                nogiWebGoods.Source = this.selectedMember.goodsUri;
+            }
         }
     }
 }

@@ -21,11 +21,19 @@ namespace Sakamichi46Mobile.Nogizaka46
             Master = new NogiMasterPage();
             Detail = new NogiDetailPage(nogiCtrl);
 
+            NogiDetailPage nogiDetail = (NogiDetailPage)Detail;
+
             ((NogiMasterPage)Master).NogiListView.ItemsSource = new ObservableCollection<Member>(member);
             ((NogiMasterPage)Master).NogiListView.ItemSelected += (o, e) =>
             {
                 IsPresented = false;
-                ((NogiDetailPage)Detail).ChangeWebPage((Member)e.SelectedItem);
+                nogiDetail.selectedMember = (Member)e.SelectedItem;
+                nogiDetail.ChangeWebPage((Member)e.SelectedItem);
+            };
+
+            nogiDetail.CurrentPageChanged += (o, e) =>
+            {
+                nogiDetail.ChangeWebPage(null);
             };
         }
     }
