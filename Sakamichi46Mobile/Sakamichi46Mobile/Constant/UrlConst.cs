@@ -17,5 +17,7 @@ namespace Sakamichi46Mobile.Constant
         public const string BLOG = "blog/mobile";
 
         public const string GOODS = "goods/mobile";
+
+        public const string YOUTUBE = "https://www.youtube.com/results?search_query=";
     }
 }

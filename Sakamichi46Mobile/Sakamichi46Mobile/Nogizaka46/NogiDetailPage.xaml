@@ -11,6 +11,9 @@
     <ContentPage Title="Goods">
       <WebView x:Name="nogiWebGoods" />
     </ContentPage>
+    <ContentPage Title="YouTube">
+      <WebView x:Name="nogiWebYouTube" />
+    </ContentPage>
   </TabbedPage.Children>
   
 </TabbedPage>

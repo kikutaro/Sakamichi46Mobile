@@ -40,6 +40,10 @@ namespace Sakamichi46Mobile.Nogizaka46
             {
                 nogiWebGoods.Source = this.selectedMember.goodsUri;
             }
+            else if(tabIdx == 2)
+            {
+                nogiWebYouTube.Source = UrlConst.YOUTUBE + this.selectedMember.name;
+            }
         }
     }
 }
