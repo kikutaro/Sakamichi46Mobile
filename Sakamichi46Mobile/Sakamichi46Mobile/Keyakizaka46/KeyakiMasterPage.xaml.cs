@@ -16,9 +16,6 @@ namespace Sakamichi46Mobile.Keyakizaka46
         public KeyakiMasterPage()
         {
             InitializeComponent();
-
-            KeyakiController keyaki = new KeyakiController("http://46api.sakamichi46.com/sakamichi46api/api/keyakizaka46/profile");
-            KeyakiListView.ItemsSource = new ObservableCollection<Member>(keyaki.GetAllProfile());
         }
     }
 }

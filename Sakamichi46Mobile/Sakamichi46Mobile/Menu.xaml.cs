@@ -22,6 +22,7 @@ namespace Sakamichi46Mobile
             nogiIndicator.IsRunning = true;
 
             Nogizaka46.NogiMasterDetailPage nogiPage = null;
+            Keyakizaka46.KeyakiMasterDetailPage keyakiPage = null;
 
             NogiController nogiCtrl = new NogiController(UrlConst.NOGI.AbsoluteUri);
             nogiCtrl.RunAsync().ContinueWith((t) =>
@@ -32,6 +33,17 @@ namespace Sakamichi46Mobile
                     btnNogi.Opacity = 1.0;
                     nogiIndicator.IsRunning = false;
                     nogiPage = new Nogizaka46.NogiMasterDetailPage(nogiCtrl, t.Result);
+                });
+            });
+            KeyakiController keyakiCtrl = new KeyakiController(UrlConst.KEYAKI.AbsoluteUri);
+            keyakiCtrl.RunAsync().ContinueWith((t) =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    isLoad = false;
+                    btnNogi.Opacity = 1.0;
+                    nogiIndicator.IsRunning = false;
+                    keyakiPage = new Keyakizaka46.KeyakiMasterDetailPage(keyakiCtrl, t.Result);
                 });
             });
 
@@ -48,7 +60,10 @@ namespace Sakamichi46Mobile
 
             btnKeyaki.Clicked += (o, e) =>
             {
-                Navigation.PushModalAsync(new Keyakizaka46.KeyakiMasterDetailPage());
+                if(keyakiPage != null)
+                {
+                    Navigation.PushModalAsync(keyakiPage);
+                }
             };
 
             btnHira.Clicked += (o, e) =>

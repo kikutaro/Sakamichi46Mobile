@@ -5,10 +5,14 @@
              Title="Detail">
   <TabbedPage.Children>
     <ContentPage Title="Blog">
-      <WebView x:Name="keyakiWeb" Source="http://www.keyakizaka46.com/mob/index.php?site=k46o" />
+      <WebView x:Name="keyakiWebBlog" />
     </ContentPage>
-    <ContentPage Title="foo">
-
+    <ContentPage Title="Goods">
+      <WebView x:Name="keyakiWebGoods" />
+    </ContentPage>
+    <ContentPage Title="YouTube">
+      <WebView x:Name="keyakiWebYouTube" />
     </ContentPage>
   </TabbedPage.Children>
+
 </TabbedPage>

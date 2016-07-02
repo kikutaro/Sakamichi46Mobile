@@ -12,6 +12,8 @@ namespace Sakamichi46Mobile.Constant
 
         public static readonly Uri NOGI = new Uri(SAKAMICHI_ROOT_API, "nogizaka46/");
 
+        public static readonly Uri KEYAKI = new Uri(SAKAMICHI_ROOT_API, "keyakizaka46/");
+
         public const string PROFILE = "profile";
 
         public const string BLOG = "blog/mobile";

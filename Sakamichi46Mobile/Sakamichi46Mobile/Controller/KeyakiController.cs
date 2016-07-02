@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Sakamichi46Mobile.Controller
 {
-    class KeyakiController : SakamichiController
+    public class KeyakiController : SakamichiController
     {
         public KeyakiController(string url) : base(url)
         {
