@@ -44,6 +44,10 @@ namespace Sakamichi46Mobile.Nogizaka46
             {
                 nogiWebYouTube.Source = UrlConst.YOUTUBE + this.selectedMember.name;
             }
+            else if(tabIdx == 3)
+            {
+                nogiWikipedia.Source = UrlConst.WIKIPEDIA + this.selectedMember.name;
+            }
         }
     }
 }

@@ -32,17 +32,21 @@ namespace Sakamichi46Mobile.Keyakizaka46
             }
 
             int tabIdx = Children.IndexOf(CurrentPage);
-            if (tabIdx == 0)
+            if(tabIdx == 0)
             {
                 keyakiWebBlog.Source = this.selectedMember.blogUri;
             }
-            else if (tabIdx == 1)
+            else if(tabIdx == 1)
             {
                 keyakiWebGoods.Source = this.selectedMember.goodsUri;
             }
-            else if (tabIdx == 2)
+            else if(tabIdx == 2)
             {
                 keyakiWebYouTube.Source = UrlConst.YOUTUBE + this.selectedMember.name;
+            }
+            else if(tabIdx == 3)
+            {
+                keyakiWikipedia.Source = UrlConst.WIKIPEDIA + this.selectedMember.name;
             }
         }
     }
