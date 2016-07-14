@@ -11,6 +11,7 @@ namespace Sakamichi46Mobile.Keyakizaka46
 {
     public partial class KeyakiDetailPage : TabbedPage
     {
+        private KeyakiController keyakiCtrl;
         public Member selectedMember { get; set; }
 
         public KeyakiDetailPage()
@@ -20,15 +21,21 @@ namespace Sakamichi46Mobile.Keyakizaka46
 
         public KeyakiDetailPage(KeyakiController keyakiCtrl) : this()
         {
+            this.keyakiCtrl = keyakiCtrl;
+        }
+
+        private void InitWebPage()
+        {
             keyakiWebBlog.Source = keyakiCtrl.GetOfficialBlog().Result;
             keyakiWebGoods.Source = keyakiCtrl.GetOfficialGoods().Result;
         }
 
         public void ChangeWebPage(Member selectedMember)
         {
-            if (selectedMember != null)
+            if (selectedMember == null)
             {
-                this.selectedMember = selectedMember;
+                InitWebPage();
+                return;
             }
 
             int tabIdx = Children.IndexOf(CurrentPage);
