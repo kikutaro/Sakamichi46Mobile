@@ -65,11 +65,6 @@ namespace Sakamichi46Mobile
                     Navigation.PushModalAsync(keyakiPage);
                 }
             };
-
-            btnHira.Clicked += (o, e) =>
-            {
-                Navigation.PushModalAsync(new HiraganaKeyaki.HiraMasterDetailPage());
-            };
         }
     }
 }
