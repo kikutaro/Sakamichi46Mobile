@@ -53,6 +53,9 @@
     <Compile Include="HiraganaKeyaki\HiraMasterPage.xaml.cs">
       <DependentUpon>HiraMasterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Info.xaml.cs">
+      <DependentUpon>Info.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Keyakizaka46\KeyakiDetailPage.xaml.cs">
       <DependentUpon>KeyakiDetailPage.xaml</DependentUpon>
     </Compile>
@@ -65,6 +68,8 @@
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\InfoItem.cs" />
+    <Compile Include="Model\InfoGroup.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Nogizaka46\NogiDetailPage.xaml.cs">
       <DependentUpon>NogiDetailPage.xaml</DependentUpon>
@@ -193,6 +198,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Menu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Info.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
