@@ -3,23 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Sakamichi46Mobile;assembly=Sakamichi46Mobile"
              x:Class="Sakamichi46Mobile.Info">
-  <ContentPage.Content>
-    <ListView x:Name="infoView"
-              IsGroupingEnabled="true"
-              GroupDisplayBinding="{Binding Title}"
-              GroupShortNameBinding="{Binding ShortName}">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <TextCell Text="{Binding Name}" />
-          <!--
-          <ViewCell>
-            <StackLayout Orientation="Vertical">
-              <Button Text="btn" />
-            </StackLayout>
-          </ViewCell>
-          -->
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
-  </ContentPage.Content>
+  <StackLayout Padding="20" Spacing="20" >
+    <Label Text="アプリ情報" FontAttributes="Bold" />
+    <Button x:Name="btnShare" Text="シェアする" BorderRadius="10" BackgroundColor="Purple" />
+    <BoxView Color="Green" HeightRequest="2" />
+    <Label Text="ご意見・ご要望があれば、以下にメッセージを入力し、送信して下さい。" />
+    <Editor x:Name="editorMessage" BackgroundColor="Green" TextColor="Black" Opacity="0.3" />
+    <Button x:Name="btnRequest" Text="送信" BorderRadius="10" BackgroundColor="Green" />
+  </StackLayout>
 </ContentPage>
