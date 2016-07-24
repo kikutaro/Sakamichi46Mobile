@@ -30,20 +30,19 @@ namespace Sakamichi46Mobile.Controller
         public async Task<List<Member>> RunAsync()
         {
             Uri profileUrl = new Uri(baseUrl, UrlConst.PROFILE);
-            var response = httpClient.GetAsync(profileUrl.AbsoluteUri).Result;
+            var response = await httpClient.GetAsync(profileUrl.AbsoluteUri);
             if (response.IsSuccessStatusCode)
             {
                 var ret = await response.Content.ReadAsStringAsync();
                 member = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Member>>(ret);
             }
-            await Task.Delay(5000);
             return member;
         }
 
         public async Task<string> GetOfficialBlog()
         {
             Uri blogUrl = new Uri(baseUrl, UrlConst.BLOG);
-            var response = httpClient.GetAsync(blogUrl.AbsoluteUri).Result;
+            var response = await httpClient.GetAsync(blogUrl.AbsoluteUri);
             return await response.Content.ReadAsStringAsync();
         }
 

@@ -14,20 +14,34 @@ namespace Sakamichi46Mobile.Nogizaka46
         private NogiController nogiCtrl;
         public Member selectedMember { get; set; }
 
+        public string nogiOfficialBlog { get; set; }
+        
+        public string nogiOfficialGoods { get; set; }
+
         public NogiDetailPage()
         {
             InitializeComponent();
         }
 
-        public NogiDetailPage(NogiController nogiCtrl) : this()
+        public NogiDetailPage(NogiController nogiCtrl, string nogiOfficialBlog, string nogiOfficialGoods) : this()
         {
             this.nogiCtrl = nogiCtrl;
+            ChangeWebPage(null, nogiOfficialBlog, nogiOfficialGoods);
         }
 
         private void InitWebPage()
         {
-            nogiWebBlog.Source = nogiCtrl.GetOfficialBlog().Result;
-            nogiWebGoods.Source = nogiCtrl.GetOfficialGoods().Result;
+            nogiWebBlog.Source = nogiOfficialBlog;
+            nogiWebGoods.Source = nogiOfficialGoods;
+            nogiWebYouTube.Source = UrlConst.YOUTUBE + SakamichiConst.NOGIZAKA46;
+            nogiWikipedia.Source = UrlConst.WIKIPEDIA + SakamichiConst.NOGIZAKA46;
+        }
+
+        public void ChangeWebPage(Member selectedMember, string nogiOfficialBlog, string nogiOfficialGoods)
+        {
+            this.nogiOfficialBlog = nogiOfficialBlog;
+            this.nogiOfficialGoods = nogiOfficialGoods;
+            ChangeWebPage(selectedMember);
         }
 
         public void ChangeWebPage(Member selectedMember)
@@ -36,7 +50,8 @@ namespace Sakamichi46Mobile.Nogizaka46
             {
                 InitWebPage();
                 return;
-            } 
+            }
+            this.selectedMember = selectedMember;
 
             int tabIdx = Children.IndexOf(CurrentPage);
             if(tabIdx == 0)

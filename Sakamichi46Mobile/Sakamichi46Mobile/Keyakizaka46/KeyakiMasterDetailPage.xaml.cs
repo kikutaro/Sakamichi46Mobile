@@ -16,10 +16,11 @@ namespace Sakamichi46Mobile.Keyakizaka46
             InitializeComponent();
         }
 
-        public KeyakiMasterDetailPage(KeyakiController keyakiCtrl, List<Member> member) : this()
+        public KeyakiMasterDetailPage(KeyakiController keyakiCtrl, List<Member> member,
+            string keyakiOfficialBlog, string keyakiOfficialGoods) : this()
         {
             Master = new KeyakiMasterPage();
-            Detail = new KeyakiDetailPage(keyakiCtrl);
+            Detail = new KeyakiDetailPage(keyakiCtrl, keyakiOfficialBlog, keyakiOfficialGoods);
 
             KeyakiDetailPage keyakiDetail = (KeyakiDetailPage)Detail;
 
@@ -33,7 +34,7 @@ namespace Sakamichi46Mobile.Keyakizaka46
 
             keyakiDetail.CurrentPageChanged += (o, e) =>
             {
-                keyakiDetail.ChangeWebPage(null);
+                keyakiDetail.ChangeWebPage(keyakiDetail.selectedMember, keyakiOfficialBlog, keyakiOfficialGoods);
             };
         }
     }

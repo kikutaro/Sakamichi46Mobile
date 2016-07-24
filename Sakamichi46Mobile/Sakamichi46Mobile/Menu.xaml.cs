@@ -1,70 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sakamichi46Mobile.Constant;
 using Sakamichi46Mobile.Controller;
+using Sakamichi46Mobile.Keyakizaka46;
+using Sakamichi46Mobile.Nogizaka46;
 using Xamarin.Forms;
 
 namespace Sakamichi46Mobile
 {
     public partial class Menu : ContentPage
     {
-        public bool isLoad { get; set; }
+        private NogiController nogiCtrl;
+        private List<Member> nogiMember;
+        private string nogiOfficialBlog;
+        private string nogiOfficialGoods;
+
+        private KeyakiController keyakiCtrl;
+        private List<Member> keyakiMember;
+        private string keyakiOfficialBlog;
+        private string keyakiOfficialGoods;
 
         public Menu()
         {
             InitializeComponent();
 
-            isLoad = true;
-            btnNogi.Opacity = 0.5;
-            nogiIndicator.IsRunning = true;
-
-            Nogizaka46.NogiMasterDetailPage nogiPage = null;
-            Keyakizaka46.KeyakiMasterDetailPage keyakiPage = null;
-
-            NogiController nogiCtrl = new NogiController(UrlConst.NOGI.AbsoluteUri);
-            nogiCtrl.RunAsync().ContinueWith((t) =>
-            {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    isLoad = false;
-                    btnNogi.Opacity = 1.0;
-                    nogiIndicator.IsRunning = false;
-                    nogiPage = new Nogizaka46.NogiMasterDetailPage(nogiCtrl, t.Result);
-                });
-            });
-            KeyakiController keyakiCtrl = new KeyakiController(UrlConst.KEYAKI.AbsoluteUri);
-            keyakiCtrl.RunAsync().ContinueWith((t) =>
-            {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    isLoad = false;
-                    btnNogi.Opacity = 1.0;
-                    nogiIndicator.IsRunning = false;
-                    keyakiPage = new Keyakizaka46.KeyakiMasterDetailPage(keyakiCtrl, t.Result);
-                });
-            });
-
-            string blog = nogiCtrl.GetOfficialBlog().Result;
-
             btnNogi.Clicked += (o, e) =>
             {
-                if(nogiPage != null)
+                if(nogiMember == null || string.IsNullOrEmpty(nogiOfficialBlog) || string.IsNullOrEmpty(nogiOfficialGoods))
+                {
+                    DisplayAlert("メッセージ", "データをダウンロード中です。", "OK");
+                    return;
+                }
+                NogiMasterDetailPage nogiPage = new NogiMasterDetailPage(nogiCtrl, nogiMember, nogiOfficialBlog, nogiOfficialGoods);
+                if (nogiPage != null)
                 {
                     Navigation.PushModalAsync(nogiPage);
                 }
-                
             };
 
             btnKeyaki.Clicked += (o, e) =>
             {
-                if(keyakiPage != null)
+                if(keyakiMember == null || string.IsNullOrEmpty(keyakiOfficialBlog) || string.IsNullOrEmpty(keyakiOfficialGoods))
+                {
+                    DisplayAlert("メッセージ", "データをダウンロード中です。", "OK");
+                    return;
+                }
+                KeyakiMasterDetailPage keyakiPage = new KeyakiMasterDetailPage(keyakiCtrl, keyakiMember, keyakiOfficialBlog, keyakiOfficialGoods);
+                if (keyakiPage != null)
                 {
                     Navigation.PushModalAsync(keyakiPage);
                 }
             };
+        }
+
+        protected async override void OnAppearing()
+        {
+            nogiCtrl = new NogiController(UrlConst.NOGI.AbsoluteUri);
+            nogiMember = await nogiCtrl.RunAsync();
+            Debug.WriteLine("end to download NogiMember List " + nogiMember.Count);
+            nogiOfficialBlog = await nogiCtrl.GetOfficialBlog();
+            Debug.WriteLine("end to download NogiOfficialBlog URL " + nogiOfficialBlog);
+            nogiOfficialGoods = await nogiCtrl.GetOfficialGoods();
+            Debug.WriteLine("end to download NogiOfficialGoods URL " + nogiOfficialGoods);
+
+            keyakiCtrl = new KeyakiController(UrlConst.KEYAKI.AbsoluteUri);
+            keyakiMember = await keyakiCtrl.RunAsync();
+            Debug.WriteLine("end to download KeyakiMember List " + keyakiMember.Count);
+            keyakiOfficialBlog = await keyakiCtrl.GetOfficialBlog();
+            Debug.WriteLine("end to download KeyakiOfficialBlog URL " + keyakiOfficialBlog);
+            keyakiOfficialGoods = await keyakiCtrl.GetOfficialGoods();
+            Debug.WriteLine("end to download KeyakiOfficialGoods URL " + keyakiOfficialGoods);
         }
     }
 }

@@ -16,10 +16,11 @@ namespace Sakamichi46Mobile.Nogizaka46
             InitializeComponent();
         }
 
-        public NogiMasterDetailPage(NogiController nogiCtrl, List<Member> member) : this()
+        public NogiMasterDetailPage(NogiController nogiCtrl, List<Member> member,
+            string nogiOfficialBlog, string nogiOfficialGoods) : this()
         {
             Master = new NogiMasterPage();
-            Detail = new NogiDetailPage(nogiCtrl);
+            Detail = new NogiDetailPage(nogiCtrl, nogiOfficialBlog, nogiOfficialGoods);
 
             NogiDetailPage nogiDetail = (NogiDetailPage)Detail;
 
@@ -33,7 +34,7 @@ namespace Sakamichi46Mobile.Nogizaka46
 
             nogiDetail.CurrentPageChanged += (o, e) =>
             {
-                nogiDetail.ChangeWebPage(null);
+                nogiDetail.ChangeWebPage(nogiDetail.selectedMember, nogiOfficialBlog, nogiOfficialGoods);
             };
         }
     }
