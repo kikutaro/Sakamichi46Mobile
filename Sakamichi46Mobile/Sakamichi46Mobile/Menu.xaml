@@ -1,43 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Sakamichi46Mobile.Menu">
 
-  <Grid RowSpacing="10" ColumnSpacing="10">
-    
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*" />
-      <RowDefinition Height="120" />
-      <!--<RowDefinition Height="75" />-->
-      <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
+  <ContentPage>
+    <Grid RowSpacing="10" ColumnSpacing="10">
 
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="*" />
-      <ColumnDefinition Width="120" />
-      <ColumnDefinition Width="120" />
-      <ColumnDefinition Width="*" />
-    </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="120" />
+        <!--<RowDefinition Height="75" />-->
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
 
-    <ActivityIndicator x:Name="nogiIndicator"
-                       Grid.Row="0" Grid.Column="0" />
-    <Button x:Name="btnNogi"
-            Text="乃木坂46"
-            BackgroundColor="Purple"
-            TextColor="White"
-            Grid.Row="1" Grid.Column="1" />
-    <Button x:Name="btnKeyaki"
-            Text="欅坂46" 
-            BackgroundColor="Green"
-            TextColor="White"
-            Grid.Row="1" Grid.Column="2"/>
-    <!--
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="120" />
+        <ColumnDefinition Width="120" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+
+      <ActivityIndicator x:Name="nogiIndicator"
+                         Grid.Row="0" Grid.Column="0" />
+      <Button x:Name="btnNogi"
+              Text="乃木坂46"
+              BackgroundColor="Purple"
+              TextColor="White"
+              Grid.Row="1" Grid.Column="1" />
+      <Button x:Name="btnKeyaki"
+              Text="欅坂46"
+              BackgroundColor="Green"
+              TextColor="White"
+              Grid.Row="1" Grid.Column="2"/>
+      <!--
     <Button x:Name="btnHira"
             Text="ひらがなけやき"
             BackgroundColor="Green"
             TextColor="White"
             Grid.Row="3" Grid.Column="1"/>
     -->
-  </Grid>
-  
-</ContentPage>
+    </Grid>
+  </ContentPage>
+  <ContentPage>
+    <StackLayout Padding="20" Spacing="20" >
+    <Label Text="アプリ情報" FontAttributes="Bold" />
+    <Button x:Name="btnShare" Text="シェアする" BorderRadius="10" BackgroundColor="Purple" />
+    <BoxView Color="Green" HeightRequest="2" />
+    <Label Text="ご意見・ご要望があれば、以下にメッセージを入力し、送信して下さい。" />
+    <Editor x:Name="editorMessage" BackgroundColor="Green" TextColor="Black" Opacity="0.3" />
+    <Button x:Name="btnRequest" Text="送信" BorderRadius="10" BackgroundColor="Green" />
+  </StackLayout>
+  </ContentPage>
+</CarouselPage>

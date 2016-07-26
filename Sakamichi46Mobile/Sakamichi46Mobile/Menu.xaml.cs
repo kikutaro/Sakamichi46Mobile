@@ -8,11 +8,12 @@ using Sakamichi46Mobile.Constant;
 using Sakamichi46Mobile.Controller;
 using Sakamichi46Mobile.Keyakizaka46;
 using Sakamichi46Mobile.Nogizaka46;
+using Plugin.Share;
 using Xamarin.Forms;
 
 namespace Sakamichi46Mobile
 {
-    public partial class Menu : ContentPage
+    public partial class Menu : CarouselPage
     {
         private NogiController nogiCtrl;
         private List<Member> nogiMember;
@@ -54,6 +55,11 @@ namespace Sakamichi46Mobile
                 {
                     Navigation.PushModalAsync(keyakiPage);
                 }
+            };
+
+            btnShare.Clicked += (o, e) =>
+            {
+                CrossShare.Current.ShareLink("https://github.com/kikutaro/Sakamichi46Mobile", "Sakamichi46 App");
             };
         }
 
