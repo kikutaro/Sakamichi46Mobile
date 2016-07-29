@@ -43,12 +43,15 @@
   </ContentPage>
   <ContentPage>
     <StackLayout Padding="20" Spacing="20" >
-    <Label Text="アプリ情報" FontAttributes="Bold" />
-    <Button x:Name="btnShare" Text="シェアする" BorderRadius="10" BackgroundColor="Purple" />
-    <BoxView Color="Green" HeightRequest="2" />
-    <Label Text="ご意見・ご要望があれば、以下にメッセージを入力し、送信して下さい。" />
-    <Editor x:Name="editorMessage" BackgroundColor="Green" TextColor="Black" Opacity="0.3" />
-    <Button x:Name="btnRequest" Text="送信" BorderRadius="10" BackgroundColor="Green" />
-  </StackLayout>
+      <Label Text="アプリ情報" FontAttributes="Bold" />
+      <Button x:Name="btnShare" Text="シェアする" BorderRadius="10" BackgroundColor="Purple" />
+      <BoxView Color="Green" HeightRequest="2" />
+      <Label Text="ご意見・ご要望があれば、以下にメッセージを入力し、送信して下さい。" />
+      <Editor x:Name="editorMessage" BackgroundColor="Green" TextColor="Black" Opacity="0.3" />
+      <Button x:Name="btnRequest" Text="送信" BorderRadius="10" BackgroundColor="Green" />
+      <BoxView Color="Green" HeightRequest="2" />
+      <Label Text="バージョン" FontAttributes="Bold" />
+      <Label Text="Beta 0.x" />
+    </StackLayout>
   </ContentPage>
 </CarouselPage>
