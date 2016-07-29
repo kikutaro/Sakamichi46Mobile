@@ -10,6 +10,7 @@ using Sakamichi46Mobile.Keyakizaka46;
 using Sakamichi46Mobile.Nogizaka46;
 using Plugin.Share;
 using Xamarin.Forms;
+using System.Net;
 
 namespace Sakamichi46Mobile
 {
@@ -25,6 +26,8 @@ namespace Sakamichi46Mobile
         private string keyakiOfficialBlog;
         private string keyakiOfficialGoods;
 
+        private bool isOffiline;
+
         public Menu()
         {
             InitializeComponent();
@@ -33,7 +36,14 @@ namespace Sakamichi46Mobile
             {
                 if(nogiMember == null || string.IsNullOrEmpty(nogiOfficialBlog) || string.IsNullOrEmpty(nogiOfficialGoods))
                 {
-                    DisplayAlert("メッセージ", "データをダウンロード中です。", "OK");
+                    if (isOffiline)
+                    {
+                        DisplayAlert(string.Empty, Message.NETWORK_DISCONNECTION, Message.OK);
+                    }
+                    else
+                    {
+                        DisplayAlert(string.Empty, Message.NOW_DOWNLOADING, Message.OK);
+                    }
                     return;
                 }
                 NogiMasterDetailPage nogiPage = new NogiMasterDetailPage(nogiCtrl, nogiMember, nogiOfficialBlog, nogiOfficialGoods);
@@ -47,7 +57,14 @@ namespace Sakamichi46Mobile
             {
                 if(keyakiMember == null || string.IsNullOrEmpty(keyakiOfficialBlog) || string.IsNullOrEmpty(keyakiOfficialGoods))
                 {
-                    DisplayAlert("メッセージ", "データをダウンロード中です。", "OK");
+                    if (isOffiline)
+                    {
+                        DisplayAlert(string.Empty, Message.NETWORK_DISCONNECTION, Message.OK);
+                    }
+                    else
+                    {
+                        DisplayAlert(string.Empty, Message.NOW_DOWNLOADING, Message.OK);
+                    }
                     return;
                 }
                 KeyakiMasterDetailPage keyakiPage = new KeyakiMasterDetailPage(keyakiCtrl, keyakiMember, keyakiOfficialBlog, keyakiOfficialGoods);
@@ -65,21 +82,30 @@ namespace Sakamichi46Mobile
 
         protected async override void OnAppearing()
         {
-            nogiCtrl = new NogiController(UrlConst.NOGI.AbsoluteUri);
-            nogiMember = await nogiCtrl.RunAsync();
-            Debug.WriteLine("end to download NogiMember List " + nogiMember.Count);
-            nogiOfficialBlog = await nogiCtrl.GetOfficialBlog();
-            Debug.WriteLine("end to download NogiOfficialBlog URL " + nogiOfficialBlog);
-            nogiOfficialGoods = await nogiCtrl.GetOfficialGoods();
-            Debug.WriteLine("end to download NogiOfficialGoods URL " + nogiOfficialGoods);
+            try
+            {
+                nogiCtrl = new NogiController(UrlConst.NOGI.AbsoluteUri);
+                nogiMember = await nogiCtrl.RunAsync();
+                Debug.WriteLine("end to download NogiMember List " + nogiMember.Count);
+                nogiOfficialBlog = await nogiCtrl.GetOfficialBlog();
+                Debug.WriteLine("end to download NogiOfficialBlog URL " + nogiOfficialBlog);
+                nogiOfficialGoods = await nogiCtrl.GetOfficialGoods();
+                Debug.WriteLine("end to download NogiOfficialGoods URL " + nogiOfficialGoods);
 
-            keyakiCtrl = new KeyakiController(UrlConst.KEYAKI.AbsoluteUri);
-            keyakiMember = await keyakiCtrl.RunAsync();
-            Debug.WriteLine("end to download KeyakiMember List " + keyakiMember.Count);
-            keyakiOfficialBlog = await keyakiCtrl.GetOfficialBlog();
-            Debug.WriteLine("end to download KeyakiOfficialBlog URL " + keyakiOfficialBlog);
-            keyakiOfficialGoods = await keyakiCtrl.GetOfficialGoods();
-            Debug.WriteLine("end to download KeyakiOfficialGoods URL " + keyakiOfficialGoods);
+                keyakiCtrl = new KeyakiController(UrlConst.KEYAKI.AbsoluteUri);
+                keyakiMember = await keyakiCtrl.RunAsync();
+                Debug.WriteLine("end to download KeyakiMember List " + keyakiMember.Count);
+                keyakiOfficialBlog = await keyakiCtrl.GetOfficialBlog();
+                Debug.WriteLine("end to download KeyakiOfficialBlog URL " + keyakiOfficialBlog);
+                keyakiOfficialGoods = await keyakiCtrl.GetOfficialGoods();
+                Debug.WriteLine("end to download KeyakiOfficialGoods URL " + keyakiOfficialGoods);
+            }
+            catch(WebException e)
+            {
+                Debug.WriteLine("Network error " + e.Response);
+                await DisplayAlert(string.Empty, Message.NETWORK_DISCONNECTION, Message.OK);
+                isOffiline = true;
+            }
         }
     }
 }

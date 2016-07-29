@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Constant\Message.cs" />
     <Compile Include="Constant\SakamichiConst.cs" />
     <Compile Include="Constant\UrlConst.cs" />
     <Compile Include="Controller\HiraController.cs" />
