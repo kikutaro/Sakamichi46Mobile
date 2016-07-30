@@ -60,15 +60,15 @@ namespace Sakamichi46Mobile.Nogizaka46
             }
             else if(tabIdx == 1)
             {
-                nogiWebGoods.Source = this.selectedMember.goodsUri;
+                nogiWebYouTube.Source = UrlConst.YOUTUBE + this.selectedMember.name;
             }
             else if(tabIdx == 2)
             {
-                nogiWebYouTube.Source = UrlConst.YOUTUBE + this.selectedMember.name;
+                nogiWikipedia.Source = UrlConst.WIKIPEDIA + this.selectedMember.name;
             }
             else if(tabIdx == 3)
             {
-                nogiWikipedia.Source = UrlConst.WIKIPEDIA + this.selectedMember.name;
+                nogiWebGoods.Source = this.selectedMember.goodsUri;
             }
         }
     }

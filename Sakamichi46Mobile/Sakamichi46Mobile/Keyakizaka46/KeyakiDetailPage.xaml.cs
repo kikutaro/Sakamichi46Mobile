@@ -59,15 +59,15 @@ namespace Sakamichi46Mobile.Keyakizaka46
             }
             else if(tabIdx == 1)
             {
-                keyakiWebGoods.Source = this.selectedMember.goodsUri;
+                keyakiWebYouTube.Source = UrlConst.YOUTUBE + this.selectedMember.name;
             }
             else if(tabIdx == 2)
             {
-                keyakiWebYouTube.Source = UrlConst.YOUTUBE + this.selectedMember.name;
+                keyakiWikipedia.Source = UrlConst.WIKIPEDIA + this.selectedMember.name;
             }
             else if(tabIdx == 3)
             {
-                keyakiWikipedia.Source = UrlConst.WIKIPEDIA + this.selectedMember.name;
+                keyakiWebGoods.Source = this.selectedMember.goodsUri;
             }
         }
     }

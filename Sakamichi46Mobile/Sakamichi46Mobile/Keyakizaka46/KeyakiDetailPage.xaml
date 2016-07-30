@@ -7,14 +7,14 @@
     <ContentPage Title="Blog">
       <WebView x:Name="keyakiWebBlog" />
     </ContentPage>
-    <ContentPage Title="Goods">
-      <WebView x:Name="keyakiWebGoods" />
-    </ContentPage>
     <ContentPage Title="YouTube">
       <WebView x:Name="keyakiWebYouTube" />
     </ContentPage>
     <ContentPage Title="Wikipedia">
       <WebView x:Name="keyakiWikipedia" />
+    </ContentPage>
+    <ContentPage Title="Goods">
+      <WebView x:Name="keyakiWebGoods" />
     </ContentPage>
   </TabbedPage.Children>
 

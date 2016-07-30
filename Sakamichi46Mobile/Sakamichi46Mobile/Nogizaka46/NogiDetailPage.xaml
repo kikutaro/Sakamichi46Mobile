@@ -8,14 +8,14 @@
     <ContentPage Title="Blog">
       <WebView x:Name="nogiWebBlog" />
     </ContentPage>
-    <ContentPage Title="Goods">
-      <WebView x:Name="nogiWebGoods" />
-    </ContentPage>
     <ContentPage Title="YouTube">
       <WebView x:Name="nogiWebYouTube" />
     </ContentPage>
     <ContentPage Title="Wikipedia">
       <WebView x:Name="nogiWikipedia" />
+    </ContentPage>
+    <ContentPage Title="Goods">
+      <WebView x:Name="nogiWebGoods" />
     </ContentPage>
   </TabbedPage.Children>
   
