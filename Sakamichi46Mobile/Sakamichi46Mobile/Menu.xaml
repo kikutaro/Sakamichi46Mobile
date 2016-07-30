@@ -51,7 +51,7 @@
       <Button x:Name="btnRequest" Text="送信" BorderRadius="10" BackgroundColor="Green" />
       <BoxView Color="Green" HeightRequest="2" />
       <Label Text="バージョン" FontAttributes="Bold" />
-      <Label Text="Beta 0.x" />
+      <Label Text="1.0" />
     </StackLayout>
   </ContentPage>
 </CarouselPage>
