@@ -16,11 +16,13 @@ namespace Sakamichi46Mobile
 {
     public partial class Menu : CarouselPage
     {
+        private NogiMasterDetailPage nogiPage;
         private NogiController nogiCtrl;
         private List<Member> nogiMember;
         private string nogiOfficialBlog;
         private string nogiOfficialGoods;
 
+        private KeyakiMasterDetailPage keyakiPage;
         private KeyakiController keyakiCtrl;
         private List<Member> keyakiMember;
         private string keyakiOfficialBlog;
@@ -46,7 +48,7 @@ namespace Sakamichi46Mobile
                     }
                     return;
                 }
-                NogiMasterDetailPage nogiPage = new NogiMasterDetailPage(nogiCtrl, nogiMember, nogiOfficialBlog, nogiOfficialGoods);
+                nogiPage = new NogiMasterDetailPage(nogiCtrl, nogiMember, nogiOfficialBlog, nogiOfficialGoods);
                 if (nogiPage != null)
                 {
                     Navigation.PushModalAsync(nogiPage);
@@ -67,7 +69,7 @@ namespace Sakamichi46Mobile
                     }
                     return;
                 }
-                KeyakiMasterDetailPage keyakiPage = new KeyakiMasterDetailPage(keyakiCtrl, keyakiMember, keyakiOfficialBlog, keyakiOfficialGoods);
+                keyakiPage = new KeyakiMasterDetailPage(keyakiCtrl, keyakiMember, keyakiOfficialBlog, keyakiOfficialGoods);
                 if (keyakiPage != null)
                 {
                     Navigation.PushModalAsync(keyakiPage);
@@ -77,6 +79,11 @@ namespace Sakamichi46Mobile
             btnShare.Clicked += (o, e) =>
             {
                 CrossShare.Current.ShareLink("https://github.com/kikutaro/Sakamichi46Mobile", "Sakamichi46 App");
+            };
+
+            btnDevBlog.Clicked += (o, e) =>
+            {
+                CrossShare.Current.OpenBrowser("http://nogizaka46.hatenablog.jp/");
             };
         }
 
@@ -106,6 +113,12 @@ namespace Sakamichi46Mobile
                 await DisplayAlert(string.Empty, Message.NETWORK_DISCONNECTION, Message.OK);
                 isOffiline = true;
             }
+        }
+
+        public void OnSleep()
+        {
+            if(nogiPage != null) nogiPage.OnSleep();
+            if(keyakiPage != null) keyakiPage.OnSleep();
         }
     }
 }

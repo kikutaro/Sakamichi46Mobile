@@ -11,6 +11,7 @@ namespace Sakamichi46Mobile.Nogizaka46
 {
     public partial class NogiMasterDetailPage : MasterDetailPage
     {
+        private NogiDetailPage nogiDetail;
         public NogiMasterDetailPage()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace Sakamichi46Mobile.Nogizaka46
             Master = new NogiMasterPage();
             Detail = new NogiDetailPage(nogiCtrl, nogiOfficialBlog, nogiOfficialGoods);
 
-            NogiDetailPage nogiDetail = (NogiDetailPage)Detail;
+            nogiDetail = (NogiDetailPage)Detail;
 
             ((NogiMasterPage)Master).NogiListView.ItemsSource = new ObservableCollection<Member>(member);
             ((NogiMasterPage)Master).NogiListView.ItemSelected += (o, e) =>
@@ -36,6 +37,11 @@ namespace Sakamichi46Mobile.Nogizaka46
             {
                 nogiDetail.ChangeWebPage(nogiDetail.selectedMember, nogiOfficialBlog, nogiOfficialGoods);
             };
+        }
+
+        public void OnSleep()
+        {
+            if(nogiDetail != null) nogiDetail.OnSleep();
         }
     }
 }

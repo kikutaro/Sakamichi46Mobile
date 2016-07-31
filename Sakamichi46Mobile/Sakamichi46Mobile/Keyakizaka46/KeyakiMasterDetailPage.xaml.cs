@@ -11,6 +11,7 @@ namespace Sakamichi46Mobile.Keyakizaka46
 {
     public partial class KeyakiMasterDetailPage : MasterDetailPage
     {
+        private KeyakiDetailPage keyakiDetail;
         public KeyakiMasterDetailPage()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace Sakamichi46Mobile.Keyakizaka46
             Master = new KeyakiMasterPage();
             Detail = new KeyakiDetailPage(keyakiCtrl, keyakiOfficialBlog, keyakiOfficialGoods);
 
-            KeyakiDetailPage keyakiDetail = (KeyakiDetailPage)Detail;
+            keyakiDetail = (KeyakiDetailPage)Detail;
 
             ((KeyakiMasterPage)Master).KeyakiListView.ItemsSource = new ObservableCollection<Member>(member);
             ((KeyakiMasterPage)Master).KeyakiListView.ItemSelected += (o, e) =>
@@ -36,6 +37,11 @@ namespace Sakamichi46Mobile.Keyakizaka46
             {
                 keyakiDetail.ChangeWebPage(keyakiDetail.selectedMember, keyakiOfficialBlog, keyakiOfficialGoods);
             };
+        }
+
+        public void OnSleep()
+        {
+            if(keyakiDetail != null) keyakiDetail.OnSleep();
         }
     }
 }

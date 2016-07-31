@@ -71,5 +71,13 @@ namespace Sakamichi46Mobile.Nogizaka46
                 nogiWebGoods.Source = this.selectedMember.goodsUri;
             }
         }
+
+        public void OnSleep()
+        {
+            nogiWebBlog.Source = "about:blank";
+            nogiWebYouTube.Source = "about:blank";
+            nogiWikipedia.Source = "about:blank";
+            nogiWebGoods.Source = "about:blank";
+        }
     }
 }

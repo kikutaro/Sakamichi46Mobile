@@ -10,10 +10,18 @@ namespace Sakamichi46Mobile
 {
     public partial class App : Application
     {
+        private Menu menuPage;
+
         public App()
         {
             Resources = new Xamarin.Forms.Themes.LightThemeResources();
-            MainPage = new NavigationPage(new Menu());
+            menuPage = new Menu();
+            MainPage = new NavigationPage(menuPage);
+        }
+
+        protected override void OnSleep()
+        {
+            menuPage.OnSleep();
         }
     }
 }
