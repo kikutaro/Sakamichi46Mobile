@@ -78,7 +78,7 @@ namespace Sakamichi46Mobile
 
             btnShare.Clicked += (o, e) =>
             {
-                CrossShare.Current.ShareLink("https://github.com/kikutaro/Sakamichi46Mobile", "Sakamichi46 App");
+                CrossShare.Current.ShareLink("https://play.google.com/store/apps/details?id=com.sakamichi46.Sakamichi46Mobile&hl=ja", "Sakamichi46 App");
             };
 
             btnDevBlog.Clicked += (o, e) =>
