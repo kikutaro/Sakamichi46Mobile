@@ -9,7 +9,7 @@
       <Grid.RowDefinitions>
         <RowDefinition Height="*" />
         <RowDefinition Height="120" />
-        <!--<RowDefinition Height="75" />-->
+        <RowDefinition Height="60" />
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
@@ -32,13 +32,12 @@
               BackgroundColor="Green"
               TextColor="White"
               Grid.Row="1" Grid.Column="2"/>
-      <!--
-    <Button x:Name="btnHira"
-            Text="ひらがなけやき"
-            BackgroundColor="Green"
+      <Button x:Name="btnHira"
+            Text="ひらがな&#xD;&#xA;けやき"
+            FontSize="Small"
+            BackgroundColor="#a0d468"
             TextColor="White"
-            Grid.Row="3" Grid.Column="1"/>
-    -->
+            Grid.Row="2" Grid.Column="2"/>
     </Grid>
   </ContentPage>
   <ContentPage>
@@ -60,7 +59,7 @@
       <BoxView Color="Green" HeightRequest="2" />
 
       <Label Text="バージョン" FontAttributes="Bold" />
-      <Label Text="1.0" />
+      <Label Text="1.2" />
     </StackLayout>
   </ContentPage>
 </CarouselPage>

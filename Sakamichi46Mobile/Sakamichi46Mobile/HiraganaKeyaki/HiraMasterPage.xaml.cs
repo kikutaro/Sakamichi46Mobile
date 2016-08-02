@@ -16,9 +16,6 @@ namespace Sakamichi46Mobile.HiraganaKeyaki
         public HiraMasterPage()
         {
             InitializeComponent();
-
-            HiraController hiragana = new HiraController("http://46api.sakamichi46.com/sakamichi46api/api/hiraganakeyaki/profile");
-            HiraganaListView.ItemsSource = new ObservableCollection<Member>(hiragana.GetAllProfile());
         }
     }
 }

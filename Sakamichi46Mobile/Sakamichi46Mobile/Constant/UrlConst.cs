@@ -14,6 +14,8 @@ namespace Sakamichi46Mobile.Constant
 
         public static readonly Uri KEYAKI = new Uri(SAKAMICHI_ROOT_API, "keyakizaka46/");
 
+        public static readonly Uri HIRA = new Uri(SAKAMICHI_ROOT_API, "hiraganakeyaki/");
+
         public const string PROFILE = "profile";
 
         public const string BLOG = "blog/mobile";

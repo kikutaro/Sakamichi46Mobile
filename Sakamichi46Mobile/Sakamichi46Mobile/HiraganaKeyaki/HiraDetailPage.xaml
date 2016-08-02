@@ -1,7 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Sakamichi46Mobile.HiraganaKeyaki.HiraDetailPage"
              Title="Detail">
-  <Label Text="HiraganaKeyaki" VerticalOptions="Center" HorizontalOptions="Center" />
-</ContentPage>
+
+  <TabbedPage.Children>
+    <ContentPage Title="Blog">
+      <WebView x:Name="hiraWebBlog" />
+    </ContentPage>
+    <ContentPage Title="YouTube">
+      <WebView x:Name="hiraWebYouTube" />
+    </ContentPage>
+    <ContentPage Title="Wikipedia">
+      <WebView x:Name="hiraWikipedia" />
+    </ContentPage>
+    <ContentPage Title="Goods">
+      <WebView x:Name="hiraWebGoods" />
+    </ContentPage>
+  </TabbedPage.Children>
+  
+</TabbedPage>

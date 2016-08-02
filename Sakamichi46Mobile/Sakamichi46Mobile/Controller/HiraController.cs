@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sakamichi46Mobile.Controller
 {
-    class HiraController : SakamichiController
+    public class HiraController : SakamichiController
     {
         public HiraController(string url) : base(url)
         {

@@ -11,6 +11,7 @@ using Sakamichi46Mobile.Nogizaka46;
 using Plugin.Share;
 using Xamarin.Forms;
 using System.Net;
+using Sakamichi46Mobile.HiraganaKeyaki;
 
 namespace Sakamichi46Mobile
 {
@@ -27,6 +28,12 @@ namespace Sakamichi46Mobile
         private List<Member> keyakiMember;
         private string keyakiOfficialBlog;
         private string keyakiOfficialGoods;
+
+        private HiraMasterDetailPage hiraPage;
+        private HiraController hiraCtrl;
+        private List<Member> hiraMember;
+        private string hiraOfficialBlog;
+        private string hiraOfficialGoods;
 
         private bool isOffiline;
 
@@ -76,6 +83,27 @@ namespace Sakamichi46Mobile
                 }
             };
 
+            btnHira.Clicked += (o, e) =>
+            {
+                if (hiraMember == null || string.IsNullOrEmpty(hiraOfficialBlog) || string.IsNullOrEmpty(hiraOfficialGoods))
+                {
+                    if (isOffiline)
+                    {
+                        DisplayAlert(string.Empty, Message.NETWORK_DISCONNECTION, Message.OK);
+                    }
+                    else
+                    {
+                        DisplayAlert(string.Empty, Message.NOW_DOWNLOADING, Message.OK);
+                    }
+                    return;
+                }
+                hiraPage = new HiraMasterDetailPage(hiraCtrl, hiraMember, hiraOfficialBlog, hiraOfficialGoods);
+                if (hiraPage != null)
+                {
+                    Navigation.PushModalAsync(hiraPage);
+                }
+            };
+
             btnShare.Clicked += (o, e) =>
             {
                 CrossShare.Current.ShareLink("https://play.google.com/store/apps/details?id=com.sakamichi46.Sakamichi46Mobile&hl=ja", "Sakamichi46 App");
@@ -106,6 +134,15 @@ namespace Sakamichi46Mobile
                 Debug.WriteLine("end to download KeyakiOfficialBlog URL " + keyakiOfficialBlog);
                 keyakiOfficialGoods = await keyakiCtrl.GetOfficialGoods();
                 Debug.WriteLine("end to download KeyakiOfficialGoods URL " + keyakiOfficialGoods);
+
+                hiraCtrl = new HiraController(UrlConst.HIRA.AbsoluteUri);
+                hiraMember = await hiraCtrl.RunAsync();
+                Debug.WriteLine("end to download HiraganaKeyakiMember List " + hiraMember.Count);
+                hiraOfficialBlog = await keyakiCtrl.GetOfficialBlog();
+                Debug.WriteLine("end to download HiraganaKeyakiOfficialBlog URL " + hiraOfficialBlog);
+                hiraOfficialGoods = await keyakiCtrl.GetOfficialGoods();
+                Debug.WriteLine("end to download HiraganaKeyakiOfficialGoods URL " + hiraOfficialGoods);
+
             }
             catch(WebException e)
             {

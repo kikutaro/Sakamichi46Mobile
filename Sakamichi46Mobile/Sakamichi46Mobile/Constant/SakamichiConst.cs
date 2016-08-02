@@ -11,5 +11,7 @@ namespace Sakamichi46Mobile.Constant
         public const string NOGIZAKA46 = "乃木坂46";
 
         public const string KEYAKIZAKA46 = "欅坂46";
+
+        public const string HIRAGANA_KEYAKI = "ひらがなけやき";
     }
 }

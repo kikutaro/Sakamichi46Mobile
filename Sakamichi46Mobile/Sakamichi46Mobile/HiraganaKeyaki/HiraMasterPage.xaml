@@ -8,7 +8,7 @@
       <ListView x:Name="hiraganaListView" VerticalOptions="FillAndExpand">
         <ListView.ItemTemplate>
           <DataTemplate>
-            <ImageCell Text="{Binding name}" ImageSource="{Binding profilePhotoUri}" />
+            <ImageCell Text="{Binding name}" TextColor="#a0d468" ImageSource="{Binding profilePhotoUri}" />
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>
