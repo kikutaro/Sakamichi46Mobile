@@ -8,7 +8,7 @@
       <ListView x:Name="keyakiListView" VerticalOptions="FillAndExpand">
         <ListView.ItemTemplate>
           <DataTemplate>
-            <ImageCell Text="{Binding name}" ImageSource="{Binding profilePhotoUri}" />
+            <ImageCell Text="{Binding name}" TextColor="Green" ImageSource="{Binding profilePhotoUri}" />
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>
