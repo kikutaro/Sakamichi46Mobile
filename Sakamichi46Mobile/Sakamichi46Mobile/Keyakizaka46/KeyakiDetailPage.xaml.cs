@@ -71,6 +71,44 @@ namespace Sakamichi46Mobile.Keyakizaka46
             }
         }
 
+        private WebView GetCurrentWebView()
+        {
+            int tabIdx = Children.IndexOf(CurrentPage);
+            if (tabIdx == 0)
+            {
+                return keyakiWebBlog;
+            }
+            else if (tabIdx == 1)
+            {
+                return keyakiWebYouTube;
+            }
+            else if (tabIdx == 2)
+            {
+                return keyakiWikipedia;
+            }
+            else if (tabIdx == 3)
+            {
+                return keyakiWebGoods;
+            }
+            return keyakiWebBlog;
+        }
+
+        public void PageBack(Object sender, EventArgs e)
+        {
+            if (GetCurrentWebView().CanGoBack)
+            {
+                GetCurrentWebView().GoBack();
+            }
+        }
+
+        public void PageForward(Object sender, EventArgs e)
+        {
+            if (GetCurrentWebView().CanGoForward)
+            {
+                GetCurrentWebView().GoForward();
+            }
+        }
+
         public void OnSleep()
         {
             keyakiWebBlog.Source = "about:blank";

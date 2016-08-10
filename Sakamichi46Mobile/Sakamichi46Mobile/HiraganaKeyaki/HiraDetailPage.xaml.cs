@@ -73,6 +73,44 @@ namespace Sakamichi46Mobile.HiraganaKeyaki
             }
         }
 
+        private WebView GetCurrentWebView()
+        {
+            int tabIdx = Children.IndexOf(CurrentPage);
+            if (tabIdx == 0)
+            {
+                return hiraWebBlog;
+            }
+            else if (tabIdx == 1)
+            {
+                return hiraWebYouTube;
+            }
+            else if (tabIdx == 2)
+            {
+                return hiraWikipedia;
+            }
+            else if (tabIdx == 3)
+            {
+                return hiraWebGoods;
+            }
+            return hiraWebBlog;
+        }
+
+        public void PageBack(Object sender, EventArgs e)
+        {
+            if (GetCurrentWebView().CanGoBack)
+            {
+                GetCurrentWebView().GoBack();
+            }
+        }
+
+        public void PageForward(Object sender, EventArgs e)
+        {
+            if (GetCurrentWebView().CanGoForward)
+            {
+                GetCurrentWebView().GoForward();
+            }
+        }
+
         public void OnSleep()
         {
             hiraWebBlog.Source = "about:blank";

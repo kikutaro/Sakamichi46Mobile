@@ -6,16 +6,60 @@
 
   <TabbedPage.Children>
     <ContentPage Title="Blog">
-      <WebView x:Name="hiraWebBlog" />
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="hiraWebBlog" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="#a0d468" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="#a0d468" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>
+      </ContentPage.Content>
     </ContentPage>
     <ContentPage Title="YouTube">
-      <WebView x:Name="hiraWebYouTube" />
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="hiraWebYouTube" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="#a0d468" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="#a0d468" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>
+      </ContentPage.Content>
     </ContentPage>
     <ContentPage Title="Wikipedia">
-      <WebView x:Name="hiraWikipedia" />
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="hiraWikipedia" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="#a0d468" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="#a0d468" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>
+      </ContentPage.Content>
     </ContentPage>
     <ContentPage Title="Goods">
-      <WebView x:Name="hiraWebGoods" />
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="hiraWebGoods" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="#a0d468" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="#a0d468" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>
+      </ContentPage.Content>
     </ContentPage>
   </TabbedPage.Children>
   
