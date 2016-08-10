@@ -6,16 +6,61 @@
 
   <TabbedPage.Children>
     <ContentPage Title="Blog">
-      <WebView x:Name="nogiWebBlog" />
+      <ContentPage.Content>
+        <StackLayout>
+          <!-- refer from https://github.com/xamarin/xamarin-forms-samples/blob/master/UserInterface/WebView/WebViewSample/WebViewSample/XAML%20Implementation/InAppBrowserXaml.xaml -->
+          <WebView x:Name="nogiWebBlog" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>    
+      </ContentPage.Content>
     </ContentPage>
     <ContentPage Title="YouTube">
-      <WebView x:Name="nogiWebYouTube" />
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="nogiWebYouTube" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>    
+      </ContentPage.Content>
     </ContentPage>
     <ContentPage Title="Wikipedia">
-      <WebView x:Name="nogiWikipedia" />
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="nogiWikipedia" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>    
+      </ContentPage.Content>
     </ContentPage>
     <ContentPage Title="Goods">
-      <WebView x:Name="nogiWebGoods" />
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="nogiWebGoods" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>    
+      </ContentPage.Content>
     </ContentPage>
   </TabbedPage.Children>
   

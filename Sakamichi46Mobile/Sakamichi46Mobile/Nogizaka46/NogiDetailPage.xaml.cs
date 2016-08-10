@@ -72,6 +72,44 @@ namespace Sakamichi46Mobile.Nogizaka46
             }
         }
 
+        private WebView GetCurrentWebView()
+        {
+            int tabIdx = Children.IndexOf(CurrentPage);
+            if (tabIdx == 0)
+            {
+                return nogiWebBlog;
+            }
+            else if (tabIdx == 1)
+            {
+                return nogiWebYouTube;
+            }
+            else if (tabIdx == 2)
+            {
+                return nogiWikipedia;
+            }
+            else if (tabIdx == 3)
+            {
+                return nogiWebGoods;
+            }
+            return nogiWebBlog;
+        }
+
+        public void PageBack(Object sender, EventArgs e)
+        {
+            if(GetCurrentWebView().CanGoBack)
+            {
+                GetCurrentWebView().GoBack();
+            }
+        }
+
+        public void PageForward(Object sender, EventArgs e)
+        {
+            if(GetCurrentWebView().CanGoForward)
+            {
+                GetCurrentWebView().GoForward();
+            }
+        }
+
         public void OnSleep()
         {
             nogiWebBlog.Source = "about:blank";
