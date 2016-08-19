@@ -59,7 +59,7 @@
       <BoxView Color="Green" HeightRequest="2" />
 
       <Label Text="バージョン" FontAttributes="Bold" />
-      <Label Text="1.2" />
+      <Label Text="1.3" />
     </StackLayout>
   </ContentPage>
 </CarouselPage>
