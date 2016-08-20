@@ -22,6 +22,8 @@ namespace Sakamichi46Mobile.Constant
 
         public const string GOODS = "goods/mobile";
 
+        public const string MUSIC = "music";
+
         public const string YOUTUBE = "https://www.youtube.com/results?search_query=";
 
         public const string WIKIPEDIA = "https://ja.wikipedia.org/wiki/";

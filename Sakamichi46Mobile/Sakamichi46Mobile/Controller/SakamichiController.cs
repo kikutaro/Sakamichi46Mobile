@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Sakamichi46Mobile.Constant;
+using Sakamichi46Mobile.Model;
 
 namespace Sakamichi46Mobile.Controller
 {
@@ -37,6 +39,19 @@ namespace Sakamichi46Mobile.Controller
                 member = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Member>>(ret);
             }
             return member;
+        }
+
+        public async Task<List<Music>> GetMusic()
+        {
+            List<Music> musics = new List<Music>();
+            Uri musicUrl = new Uri(baseUrl, UrlConst.MUSIC);
+            var response = await httpClient.GetAsync(musicUrl.AbsoluteUri);
+            if (response.IsSuccessStatusCode)
+            {
+                var ret = await response.Content.ReadAsStringAsync();
+                musics = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Music>>(ret);
+            }
+            return musics;
         }
 
         public async Task<string> GetOfficialBlog()
