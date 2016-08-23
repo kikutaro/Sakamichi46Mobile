@@ -12,6 +12,7 @@ using Plugin.Share;
 using Xamarin.Forms;
 using System.Net;
 using Sakamichi46Mobile.HiraganaKeyaki;
+using Sakamichi46Mobile.Discography;
 
 namespace Sakamichi46Mobile
 {
@@ -35,11 +36,19 @@ namespace Sakamichi46Mobile
         private string hiraOfficialBlog;
         private string hiraOfficialGoods;
 
+        private DiscographyPage discoPage;
+
         private bool isOffiline;
 
         public Menu()
         {
             InitializeComponent();
+
+            btnDiscography.Clicked += (o, e) =>
+            {
+                discoPage = new DiscographyPage(nogiCtrl, keyakiCtrl);
+                Navigation.PushModalAsync(discoPage);
+            };
 
             btnNogi.Clicked += (o, e) =>
             {

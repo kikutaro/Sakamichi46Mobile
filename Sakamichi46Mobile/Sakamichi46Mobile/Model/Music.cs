@@ -14,7 +14,7 @@ namespace Sakamichi46Mobile.Model
 
         public string releaseDate { get; set; }
 
-        public string lyricUri { get; set; }
+        public string lyricsUri { get; set; }
 
         public string coverPhotoUri { get; set; }
 
