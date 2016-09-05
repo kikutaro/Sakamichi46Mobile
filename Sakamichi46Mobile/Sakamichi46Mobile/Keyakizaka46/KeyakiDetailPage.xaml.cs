@@ -111,10 +111,8 @@ namespace Sakamichi46Mobile.Keyakizaka46
 
         public void OnSleep()
         {
-            keyakiWebBlog.Source = "about:blank";
+            //Sleep時にYouTube再生を止める
             keyakiWebYouTube.Source = "about:blank";
-            keyakiWikipedia.Source = "about:blank";
-            keyakiWebGoods.Source = "about:blank";
         }
     }
 }

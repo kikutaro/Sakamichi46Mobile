@@ -112,10 +112,8 @@ namespace Sakamichi46Mobile.Nogizaka46
 
         public void OnSleep()
         {
-            nogiWebBlog.Source = "about:blank";
+            //Sleep時にYouTube再生を止める
             nogiWebYouTube.Source = "about:blank";
-            nogiWikipedia.Source = "about:blank";
-            nogiWebGoods.Source = "about:blank";
         }
     }
 }

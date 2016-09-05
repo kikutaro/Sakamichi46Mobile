@@ -113,10 +113,8 @@ namespace Sakamichi46Mobile.HiraganaKeyaki
 
         public void OnSleep()
         {
-            hiraWebBlog.Source = "about:blank";
+            //Sleep時にYouTube再生を止める
             hiraWebYouTube.Source = "about:blank";
-            hiraWikipedia.Source = "about:blank";
-            hiraWebGoods.Source = "about:blank";
         }
     }
 }
