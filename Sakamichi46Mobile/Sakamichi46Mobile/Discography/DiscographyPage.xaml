@@ -6,8 +6,10 @@
     <ContentPage Title="乃木坂46">
       <ContentPage.Content>
         <StackLayout>
-          <SearchBar x:Name="searchNogiMusic" Placeholder="曲名で絞る" TextColor="Purple" />
-          <Label Text="下方向へスワイプすると曲データを取得します。&#xD;&#xA;曲名をクリックすると歌詞サイトを表示します。"/>
+          <SearchBar x:Name="searchNogiMusic" Placeholder="曲名で絞る" PlaceholderColor="Gray" TextColor="Purple" />
+          <Label
+            TextColor="Purple"
+            Text="下方向へスワイプすると曲データを取得します。&#xD;&#xA;曲名をクリックすると歌詞サイトを表示します。"/>
           <ListView x:Name="NogizakaMusics" CachingStrategy="RecycleElement" IsPullToRefreshEnabled="True"
                     GroupDisplayBinding="{Binding releaseVersion}"
                     GroupShortNameBinding="{Binding releaseVersion}"
@@ -24,8 +26,10 @@
     <ContentPage Title="欅坂46">
       <ContentPage.Content>
         <StackLayout>
-        <SearchBar x:Name="searchKeyaMusic" Placeholder="曲名で絞る" TextColor="Green" />
-          <Label Text="下方向へスワイプすると曲データを取得します。&#xD;&#xA;曲名をクリックすると歌詞サイトを表示します。"/>
+        <SearchBar x:Name="searchKeyaMusic" Placeholder="曲名で絞る" PlaceholderColor="Gray" TextColor="Green" />
+          <Label
+            TextColor="Green"
+            Text="下方向へスワイプすると曲データを取得します。&#xD;&#xA;曲名をクリックすると歌詞サイトを表示します。"/>
           <ListView x:Name="KeyakiMusics"  CachingStrategy="RecycleElement" IsPullToRefreshEnabled="True"
                     GroupDisplayBinding="{Binding releaseVersion}"
                     GroupShortNameBinding="{Binding releaseVersion}"

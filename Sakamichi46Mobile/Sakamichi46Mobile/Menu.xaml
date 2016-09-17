@@ -48,7 +48,7 @@
   </ContentPage>
   <ContentPage>
     <StackLayout Padding="20" Spacing="20" >
-      <Label Text="アプリ情報" FontAttributes="Bold" />
+      <Label Text="アプリ情報" TextColor="Gray" />
       <Button x:Name="btnShare" Text="シェアする" BorderRadius="10" BackgroundColor="Purple" />
       <BoxView Color="Green" HeightRequest="2" />
       
@@ -58,14 +58,14 @@
       <Button x:Name="btnRequest" Text="送信" BorderRadius="10" BackgroundColor="Green" />
       -->
 
-      <Label Text="開発者" FontAttributes="Bold" />
-      <Label Text="@nogizaka46cheer" />
+      <Label Text="開発者" TextColor="Gray" />
+      <Label Text="@nogizaka46cheer" TextColor="Gray"/>
       <Button x:Name="btnDevBlog" Text="開発者のブログをみる" BorderRadius="10" BackgroundColor="Green" />
       
       <BoxView Color="Green" HeightRequest="2" />
 
-      <Label Text="バージョン" FontAttributes="Bold" />
-      <Label Text="1.4" />
+      <Label Text="バージョン" TextColor="Gray" />
+      <Label Text="1.5" TextColor="Gray" />
     </StackLayout>
   </ContentPage>
 </CarouselPage>
