@@ -13,6 +13,7 @@ using Xamarin.Forms;
 using System.Net;
 using Sakamichi46Mobile.HiraganaKeyaki;
 using Sakamichi46Mobile.Discography;
+using Sakamichi46Mobile.Nogizaka46Third;
 
 namespace Sakamichi46Mobile
 {
@@ -35,6 +36,12 @@ namespace Sakamichi46Mobile
         private List<Member> hiraMember;
         private string hiraOfficialBlog;
         private string hiraOfficialGoods;
+
+        private NogiThirdMasterDetailPage nogiThirdPage;
+        private NogiThirdController nogiThirdCtrl;
+        private List<Member> nogiThirdMember;
+        private string nogiThirdOfficialBlog;
+        private string nogiThirdOfficialGoods;
 
         private DiscographyPage discoPage;
 
@@ -113,6 +120,27 @@ namespace Sakamichi46Mobile
                 }
             };
 
+            btnNogi3rd.Clicked += (o, e) =>
+            {
+                if (nogiThirdMember == null || string.IsNullOrEmpty(nogiThirdOfficialBlog) || string.IsNullOrEmpty(nogiThirdOfficialGoods))
+                {
+                    if (isOffiline)
+                    {
+                        DisplayAlert(string.Empty, Message.NETWORK_DISCONNECTION, Message.OK);
+                    }
+                    else
+                    {
+                        DisplayAlert(string.Empty, Message.NOW_DOWNLOADING, Message.OK);
+                    }
+                    return;
+                }
+                nogiThirdPage = new NogiThirdMasterDetailPage(nogiThirdCtrl, nogiThirdMember, nogiThirdOfficialBlog, nogiThirdOfficialGoods);
+                if (nogiThirdPage != null)
+                {
+                    Navigation.PushModalAsync(nogiThirdPage);
+                }
+            };
+
             btnShare.Clicked += (o, e) =>
             {
                 CrossShare.Current.ShareLink("https://play.google.com/store/apps/details?id=com.sakamichi46.Sakamichi46Mobile&hl=ja", "Sakamichi46 App");
@@ -151,6 +179,14 @@ namespace Sakamichi46Mobile
                 Debug.WriteLine("end to download HiraganaKeyakiOfficialBlog URL " + hiraOfficialBlog);
                 hiraOfficialGoods = await keyakiCtrl.GetOfficialGoods();
                 Debug.WriteLine("end to download HiraganaKeyakiOfficialGoods URL " + hiraOfficialGoods);
+
+                nogiThirdCtrl = new NogiThirdController(UrlConst.NOGI3.AbsoluteUri);
+                nogiThirdMember = await nogiThirdCtrl.RunAsync();
+                Debug.WriteLine("end to download NogiThirdMember List " + nogiThirdMember.Count);
+                nogiThirdOfficialBlog = await nogiThirdCtrl.GetOfficialBlog();
+                Debug.WriteLine("end to download NogiThirdOfficialBlog URL " + nogiThirdOfficialBlog);
+                nogiThirdOfficialGoods = await nogiThirdCtrl.GetOfficialGoods();
+                Debug.WriteLine("end to download NogiThirdOfficialGoods URL " + nogiThirdOfficialGoods);
 
             }
             catch(WebException e)

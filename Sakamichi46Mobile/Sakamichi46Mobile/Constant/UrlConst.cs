@@ -12,6 +12,8 @@ namespace Sakamichi46Mobile.Constant
 
         public static readonly Uri NOGI = new Uri(SAKAMICHI_ROOT_API, "nogizaka46/");
 
+        public static readonly Uri NOGI3 = new Uri(SAKAMICHI_ROOT_API, "nogizaka46/3rd/");
+
         public static readonly Uri KEYAKI = new Uri(SAKAMICHI_ROOT_API, "keyakizaka46/");
 
         public static readonly Uri HIRA = new Uri(SAKAMICHI_ROOT_API, "hiraganakeyaki/");

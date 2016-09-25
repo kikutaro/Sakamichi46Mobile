@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sakamichi46Mobile.Nogizaka46Third.NogiThirdDetailPage"
+             Title="Detail">
+
+  <TabbedPage.Children>
+    <ContentPage Title="Blog">
+      <ContentPage.Content>
+        <StackLayout>
+          <!-- refer from https://github.com/xamarin/xamarin-forms-samples/blob/master/UserInterface/WebView/WebViewSample/WebViewSample/XAML%20Implementation/InAppBrowserXaml.xaml -->
+          <WebView x:Name="nogiThirdWebBlog" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="#be86c8" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="#be86c8" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>    
+      </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="YouTube">
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="nogiThirdWebYouTube" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="#be86c8" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="#be86c8" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>    
+      </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Wikipedia">
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="nogiThirdWikipedia" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="#be86c8" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="#be86c8" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>    
+      </ContentPage.Content>
+    </ContentPage>
+    <!-- Nogizaka46 3rd doesn't have goods site.
+    <ContentPage Title="Goods">
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="nogiThirdWebGoods" WidthRequest="1000" HeightRequest="1000" />
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>    
+      </ContentPage.Content>
+    </ContentPage>
+    -->
+  </TabbedPage.Children>
+  
+</TabbedPage>

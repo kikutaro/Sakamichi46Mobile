@@ -45,6 +45,7 @@
     <Compile Include="Controller\IRestHandler.cs" />
     <Compile Include="Controller\KeyakiController.cs" />
     <Compile Include="Controller\NogiController.cs" />
+    <Compile Include="Controller\NogiThirdController.cs" />
     <Compile Include="Controller\SakamichiController.cs" />
     <Compile Include="Discography\DiscographyPage.xaml.cs">
       <DependentUpon>DiscographyPage.xaml</DependentUpon>
@@ -76,6 +77,15 @@
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Music.cs" />
     <Compile Include="Model\MusicCategory.cs" />
+    <Compile Include="Nogizaka46Third\NogiThirdDetailPage.xaml.cs">
+      <DependentUpon>NogiThirdDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nogizaka46Third\NogiThirdMasterDetailPage.xaml.cs">
+      <DependentUpon>NogiThirdMasterDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nogizaka46Third\NogiThirdMasterPage.xaml.cs">
+      <DependentUpon>NogiThirdMasterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Nogizaka46\NogiDetailPage.xaml.cs">
       <DependentUpon>NogiDetailPage.xaml</DependentUpon>
     </Compile>
@@ -223,6 +233,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Discography\DiscographyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Nogizaka46Third\NogiThirdMasterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Nogizaka46Third\NogiThirdMasterDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Nogizaka46Third\NogiThirdDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

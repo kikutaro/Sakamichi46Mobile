@@ -33,6 +33,12 @@
               BackgroundColor="Green"
               TextColor="White"
               Grid.Row="1" Grid.Column="2"/>
+      <Button x:Name="btnNogi3rd"
+            Text="乃木坂&#xD;&#xA;3期生"
+            FontSize="Small"
+            BackgroundColor="#be86c8"
+            TextColor="White"
+            Grid.Row="2" Grid.Column="1"/>
       <Button x:Name="btnHira"
             Text="ひらがな&#xD;&#xA;けやき"
             FontSize="Small"
