@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sakamichi46Mobile.Controller;
+using Sakamichi46Mobile.Model;
 using Xamarin.Forms;
 
 namespace Sakamichi46Mobile.HiraganaKeyaki
@@ -17,11 +18,10 @@ namespace Sakamichi46Mobile.HiraganaKeyaki
             InitializeComponent();
         }
 
-        public HiraMasterDetailPage(HiraController hiraCtrl, List<Member> member,
-            string hiraOfficialBlog, string HiraOfficialGoods) : this()
+        public HiraMasterDetailPage(HiraController hiraCtrl, List<Member> member, SakamichiUrl hiraUrl) : this()
         {
             Master = new HiraMasterPage();
-            Detail = new HiraDetailPage(hiraCtrl, hiraOfficialBlog, HiraOfficialGoods);
+            Detail = new HiraDetailPage(hiraCtrl, hiraUrl);
 
             hiraDetail = (HiraDetailPage)Detail;
 
@@ -35,7 +35,7 @@ namespace Sakamichi46Mobile.HiraganaKeyaki
 
             hiraDetail.CurrentPageChanged += (o, e) =>
             {
-                hiraDetail.ChangeWebPage(hiraDetail.selectedMember, hiraOfficialBlog, HiraOfficialGoods);
+                hiraDetail.ChangeWebPage(hiraDetail.selectedMember, hiraUrl);
             };
         }
 

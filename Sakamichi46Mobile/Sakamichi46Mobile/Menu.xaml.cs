@@ -14,6 +14,7 @@ using System.Net;
 using Sakamichi46Mobile.HiraganaKeyaki;
 using Sakamichi46Mobile.Discography;
 using Sakamichi46Mobile.Nogizaka46Third;
+using Sakamichi46Mobile.Model;
 
 namespace Sakamichi46Mobile
 {
@@ -23,24 +24,28 @@ namespace Sakamichi46Mobile
         private NogiController nogiCtrl;
         private List<Member> nogiMember;
         private string nogiOfficialBlog;
+        private string nogiMatome;
         private string nogiOfficialGoods;
 
         private KeyakiMasterDetailPage keyakiPage;
         private KeyakiController keyakiCtrl;
         private List<Member> keyakiMember;
         private string keyakiOfficialBlog;
+        private string keyakiMatome;
         private string keyakiOfficialGoods;
 
         private HiraMasterDetailPage hiraPage;
         private HiraController hiraCtrl;
         private List<Member> hiraMember;
         private string hiraOfficialBlog;
+        private string hiraMatome;
         private string hiraOfficialGoods;
 
         private NogiThirdMasterDetailPage nogiThirdPage;
         private NogiThirdController nogiThirdCtrl;
         private List<Member> nogiThirdMember;
         private string nogiThirdOfficialBlog;
+        private string nogiThirdMatome;
         private string nogiThirdOfficialGoods;
 
         private DiscographyPage discoPage;
@@ -71,7 +76,7 @@ namespace Sakamichi46Mobile
                     }
                     return;
                 }
-                nogiPage = new NogiMasterDetailPage(nogiCtrl, nogiMember, nogiOfficialBlog, nogiOfficialGoods);
+                nogiPage = new NogiMasterDetailPage(nogiCtrl, nogiMember, new SakamichiUrl { OfficialBlogUrl = nogiOfficialBlog, MatomeUrl = nogiMatome, OfficialGoodsUrl = nogiOfficialGoods });
                 if (nogiPage != null)
                 {
                     Navigation.PushModalAsync(nogiPage);
@@ -92,7 +97,7 @@ namespace Sakamichi46Mobile
                     }
                     return;
                 }
-                keyakiPage = new KeyakiMasterDetailPage(keyakiCtrl, keyakiMember, keyakiOfficialBlog, keyakiOfficialGoods);
+                keyakiPage = new KeyakiMasterDetailPage(keyakiCtrl, keyakiMember, new SakamichiUrl { OfficialBlogUrl = keyakiOfficialBlog, MatomeUrl = keyakiMatome, OfficialGoodsUrl = keyakiOfficialGoods });
                 if (keyakiPage != null)
                 {
                     Navigation.PushModalAsync(keyakiPage);
@@ -113,7 +118,7 @@ namespace Sakamichi46Mobile
                     }
                     return;
                 }
-                hiraPage = new HiraMasterDetailPage(hiraCtrl, hiraMember, hiraOfficialBlog, hiraOfficialGoods);
+                hiraPage = new HiraMasterDetailPage(hiraCtrl, hiraMember, new SakamichiUrl { OfficialBlogUrl = hiraOfficialBlog, MatomeUrl = hiraMatome, OfficialGoodsUrl = hiraOfficialGoods });
                 if (hiraPage != null)
                 {
                     Navigation.PushModalAsync(hiraPage);
@@ -161,6 +166,8 @@ namespace Sakamichi46Mobile
                 Debug.WriteLine("end to download NogiMember List " + nogiMember.Count);
                 nogiOfficialBlog = await nogiCtrl.GetOfficialBlog();
                 Debug.WriteLine("end to download NogiOfficialBlog URL " + nogiOfficialBlog);
+                nogiMatome = await nogiCtrl.GetMatome();
+                Debug.WriteLine("end to download NogiMatome URL " + nogiMatome);
                 nogiOfficialGoods = await nogiCtrl.GetOfficialGoods();
                 Debug.WriteLine("end to download NogiOfficialGoods URL " + nogiOfficialGoods);
 
@@ -169,6 +176,8 @@ namespace Sakamichi46Mobile
                 Debug.WriteLine("end to download KeyakiMember List " + keyakiMember.Count);
                 keyakiOfficialBlog = await keyakiCtrl.GetOfficialBlog();
                 Debug.WriteLine("end to download KeyakiOfficialBlog URL " + keyakiOfficialBlog);
+                keyakiMatome = await keyakiCtrl.GetMatome();
+                Debug.WriteLine("end to download KeyakiMatome URL " + keyakiMatome);
                 keyakiOfficialGoods = await keyakiCtrl.GetOfficialGoods();
                 Debug.WriteLine("end to download KeyakiOfficialGoods URL " + keyakiOfficialGoods);
 
@@ -177,6 +186,8 @@ namespace Sakamichi46Mobile
                 Debug.WriteLine("end to download HiraganaKeyakiMember List " + hiraMember.Count);
                 hiraOfficialBlog = await keyakiCtrl.GetOfficialBlog();
                 Debug.WriteLine("end to download HiraganaKeyakiOfficialBlog URL " + hiraOfficialBlog);
+                hiraMatome = await hiraCtrl.GetMatome();
+                Debug.WriteLine("end to download HiraganaKeyakiMatome URL " + hiraMatome);
                 hiraOfficialGoods = await keyakiCtrl.GetOfficialGoods();
                 Debug.WriteLine("end to download HiraganaKeyakiOfficialGoods URL " + hiraOfficialGoods);
 
@@ -185,8 +196,8 @@ namespace Sakamichi46Mobile
                 Debug.WriteLine("end to download NogiThirdMember List " + nogiThirdMember.Count);
                 nogiThirdOfficialBlog = await nogiThirdCtrl.GetOfficialBlog();
                 Debug.WriteLine("end to download NogiThirdOfficialBlog URL " + nogiThirdOfficialBlog);
-                nogiThirdOfficialGoods = await nogiThirdCtrl.GetOfficialGoods();
-                Debug.WriteLine("end to download NogiThirdOfficialGoods URL " + nogiThirdOfficialGoods);
+                nogiThirdMatome = await nogiThirdCtrl.GetMatome();
+                Debug.WriteLine("end to download NogiThirdMatome URL " + nogiThirdMatome);
 
             }
             catch(WebException e)

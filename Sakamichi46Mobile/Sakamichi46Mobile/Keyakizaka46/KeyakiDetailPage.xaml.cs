@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sakamichi46Mobile.Constant;
 using Sakamichi46Mobile.Controller;
+using Sakamichi46Mobile.Model;
 using Xamarin.Forms;
 
 namespace Sakamichi46Mobile.Keyakizaka46
@@ -16,6 +17,8 @@ namespace Sakamichi46Mobile.Keyakizaka46
 
         public string keyakiOfficialBlog { get; set; }
 
+        public string keyakiMatome { get; set; }
+
         public string keyakiOfficialGoods { get; set; }
 
         public KeyakiDetailPage()
@@ -23,23 +26,25 @@ namespace Sakamichi46Mobile.Keyakizaka46
             InitializeComponent();
         }
 
-        public KeyakiDetailPage(KeyakiController keyakiCtrl, string keyakiOfficialBlog, string keyakiOfficialGoods) : this()
+        public KeyakiDetailPage(KeyakiController keyakiCtrl, SakamichiUrl keyakiUrl) : this()
         {
             this.keyakiCtrl = keyakiCtrl;
-            ChangeWebPage(null, keyakiOfficialBlog, keyakiOfficialGoods);
+            ChangeWebPage(null, keyakiUrl);
         }
 
         private void InitWebPage()
         {
             keyakiWebBlog.Source = keyakiOfficialBlog;
+            keyakiWebMatome.Source = keyakiMatome;
             keyakiWebGoods.Source = keyakiOfficialGoods;
             keyakiWebYouTube.Source = UrlConst.YOUTUBE + SakamichiConst.KEYAKIZAKA46;
             keyakiWikipedia.Source = UrlConst.WIKIPEDIA + SakamichiConst.KEYAKIZAKA46;
         }
 
-        public void ChangeWebPage(Member selectedMember, string keyakiOfficialBlog, string keyakiOfficialGoods)
+        public void ChangeWebPage(Member selectedMember, SakamichiUrl keyakiUrl)
         {
             this.keyakiOfficialBlog = keyakiOfficialBlog;
+            this.keyakiMatome = keyakiUrl.MatomeUrl;
             this.keyakiOfficialGoods = keyakiOfficialGoods;
             ChangeWebPage(selectedMember);
         }
@@ -67,6 +72,10 @@ namespace Sakamichi46Mobile.Keyakizaka46
             }
             else if (tabIdx == 3)
             {
+                keyakiWebMatome.Source = this.selectedMember.matomeUri[0];
+            }
+            else if (tabIdx == 4)
+            {
                 keyakiWebGoods.Source = this.selectedMember.goodsUri;
             }
         }
@@ -87,6 +96,10 @@ namespace Sakamichi46Mobile.Keyakizaka46
                 return keyakiWikipedia;
             }
             else if (tabIdx == 3)
+            {
+                return keyakiWebMatome;
+            }
+            else if (tabIdx == 4)
             {
                 return keyakiWebGoods;
             }

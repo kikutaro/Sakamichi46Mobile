@@ -61,6 +61,14 @@ namespace Sakamichi46Mobile.Controller
             return await response.Content.ReadAsStringAsync();
         }
 
+        public async Task<string> GetMatome()
+        {
+            List<string> matomeList = new List<string>();
+            Uri matomeUrl = new Uri(baseUrl, UrlConst.MATOME);
+            var response = await httpClient.GetAsync(matomeUrl.AbsoluteUri);
+            return await response.Content.ReadAsStringAsync();
+        }
+
         public async Task<String> GetOfficialGoods()
         {
             Uri goodsUrl = new Uri(baseUrl, UrlConst.GOODS);

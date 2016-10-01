@@ -77,6 +77,7 @@
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Music.cs" />
     <Compile Include="Model\MusicCategory.cs" />
+    <Compile Include="Model\SakamichiUrl.cs" />
     <Compile Include="Nogizaka46Third\NogiThirdDetailPage.xaml.cs">
       <DependentUpon>NogiThirdDetailPage.xaml</DependentUpon>
     </Compile>

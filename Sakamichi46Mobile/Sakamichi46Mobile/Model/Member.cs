@@ -14,7 +14,7 @@ namespace Sakamichi46Mobile
         public string constellation { get; set; }
         public string profilePhotoUri { get; set; }
         public string blogUri { get; set; }
-
         public string goodsUri { get; set; }
+        public List<string> matomeUri { get; set; }
     }
 }

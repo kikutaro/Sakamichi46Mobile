@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sakamichi46Mobile.Controller;
+using Sakamichi46Mobile.Model;
 using Xamarin.Forms;
 
 namespace Sakamichi46Mobile.Keyakizaka46
@@ -17,11 +18,10 @@ namespace Sakamichi46Mobile.Keyakizaka46
             InitializeComponent();
         }
 
-        public KeyakiMasterDetailPage(KeyakiController keyakiCtrl, List<Member> member,
-            string keyakiOfficialBlog, string keyakiOfficialGoods) : this()
+        public KeyakiMasterDetailPage(KeyakiController keyakiCtrl, List<Member> member, SakamichiUrl keyakiUrl) : this()
         {
             Master = new KeyakiMasterPage();
-            Detail = new KeyakiDetailPage(keyakiCtrl, keyakiOfficialBlog, keyakiOfficialGoods);
+            Detail = new KeyakiDetailPage(keyakiCtrl, keyakiUrl);
 
             keyakiDetail = (KeyakiDetailPage)Detail;
 
@@ -35,7 +35,7 @@ namespace Sakamichi46Mobile.Keyakizaka46
 
             keyakiDetail.CurrentPageChanged += (o, e) =>
             {
-                keyakiDetail.ChangeWebPage(keyakiDetail.selectedMember, keyakiOfficialBlog, keyakiOfficialGoods);
+                keyakiDetail.ChangeWebPage(keyakiDetail.selectedMember, keyakiUrl);
             };
         }
 

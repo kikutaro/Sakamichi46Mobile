@@ -48,6 +48,20 @@
         </StackLayout>    
       </ContentPage.Content>
     </ContentPage>
+    <ContentPage Title="まとめ">
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="nogiWebMatome" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="Purple" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>
+      </ContentPage.Content>
+    </ContentPage>
     <ContentPage Title="Goods">
       <ContentPage.Content>
         <StackLayout>

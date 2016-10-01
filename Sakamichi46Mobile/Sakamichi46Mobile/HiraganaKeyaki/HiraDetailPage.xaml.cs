@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sakamichi46Mobile.Constant;
 using Sakamichi46Mobile.Controller;
+using Sakamichi46Mobile.Model;
 using Xamarin.Forms;
 
 namespace Sakamichi46Mobile.HiraganaKeyaki
@@ -17,6 +18,8 @@ namespace Sakamichi46Mobile.HiraganaKeyaki
 
         public string hiraOfficialBlog { get; set; }
 
+        public string hiraMatome { get; set; }
+
         public string hiraOfficialGoods { get; set; }
 
         public HiraDetailPage()
@@ -24,23 +27,25 @@ namespace Sakamichi46Mobile.HiraganaKeyaki
             InitializeComponent();
         }
 
-        public HiraDetailPage(HiraController hiraCtrl, string hiraOfficialBlog, string hiraOfficialGoods) : this()
+        public HiraDetailPage(HiraController hiraCtrl, SakamichiUrl hiraUrl) : this()
         {
             this.hiraCtrl = hiraCtrl;
-            ChangeWebPage(null, hiraOfficialBlog, hiraOfficialGoods);
+            ChangeWebPage(null, hiraUrl);
         }
 
         private void InitWebPage()
         {
             hiraWebBlog.Source = hiraOfficialBlog;
+            hiraWebMatome.Source = hiraMatome;
             hiraWebGoods.Source = hiraOfficialGoods;
             hiraWebYouTube.Source = UrlConst.YOUTUBE + SakamichiConst.HIRAGANA_KEYAKI;
             hiraWikipedia.Source = UrlConst.WIKIPEDIA + SakamichiConst.HIRAGANA_KEYAKI;
         }
 
-        public void ChangeWebPage(Member selectedMember, string hiraOfficialBlog, string hiraOfficialGoods)
+        public void ChangeWebPage(Member selectedMember, SakamichiUrl hiraUrl)
         {
             this.hiraOfficialBlog = hiraOfficialBlog;
+            this.hiraMatome = hiraUrl.MatomeUrl;
             this.hiraOfficialGoods = hiraOfficialGoods;
             ChangeWebPage(selectedMember);
         }
@@ -69,6 +74,10 @@ namespace Sakamichi46Mobile.HiraganaKeyaki
             }
             else if (tabIdx == 3)
             {
+                hiraWebMatome.Source = this.selectedMember.matomeUri[0];
+            }
+            else if (tabIdx == 4)
+            {
                 hiraWebGoods.Source = this.selectedMember.goodsUri;
             }
         }
@@ -89,6 +98,10 @@ namespace Sakamichi46Mobile.HiraganaKeyaki
                 return hiraWikipedia;
             }
             else if (tabIdx == 3)
+            {
+                return hiraWebMatome;
+            }
+            else if (tabIdx == 4)
             {
                 return hiraWebGoods;
             }

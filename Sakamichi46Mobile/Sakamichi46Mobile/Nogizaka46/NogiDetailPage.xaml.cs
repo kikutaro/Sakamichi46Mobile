@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sakamichi46Mobile.Constant;
 using Sakamichi46Mobile.Controller;
+using Sakamichi46Mobile.Model;
 using Xamarin.Forms;
 
 namespace Sakamichi46Mobile.Nogizaka46
@@ -15,6 +16,8 @@ namespace Sakamichi46Mobile.Nogizaka46
         public Member selectedMember { get; set; }
 
         public string nogiOfficialBlog { get; set; }
+
+        public string nogiMatome { get; set; }
         
         public string nogiOfficialGoods { get; set; }
 
@@ -23,24 +26,26 @@ namespace Sakamichi46Mobile.Nogizaka46
             InitializeComponent();
         }
 
-        public NogiDetailPage(NogiController nogiCtrl, string nogiOfficialBlog, string nogiOfficialGoods) : this()
+        public NogiDetailPage(NogiController nogiCtrl, SakamichiUrl nogiUrl) : this()
         {
             this.nogiCtrl = nogiCtrl;
-            ChangeWebPage(null, nogiOfficialBlog, nogiOfficialGoods);
+            ChangeWebPage(null, nogiUrl);
         }
 
         private void InitWebPage()
         {
             nogiWebBlog.Source = nogiOfficialBlog;
+            nogiWebMatome.Source = nogiMatome;
             nogiWebGoods.Source = nogiOfficialGoods;
             nogiWebYouTube.Source = UrlConst.YOUTUBE + SakamichiConst.NOGIZAKA46;
             nogiWikipedia.Source = UrlConst.WIKIPEDIA + SakamichiConst.NOGIZAKA46;
         }
 
-        public void ChangeWebPage(Member selectedMember, string nogiOfficialBlog, string nogiOfficialGoods)
+        public void ChangeWebPage(Member selectedMember, SakamichiUrl nogiUrl)
         {
-            this.nogiOfficialBlog = nogiOfficialBlog;
-            this.nogiOfficialGoods = nogiOfficialGoods;
+            this.nogiOfficialBlog = nogiUrl.OfficialBlogUrl;
+            this.nogiMatome = nogiUrl.MatomeUrl;
+            this.nogiOfficialGoods = nogiUrl.OfficialGoodsUrl;
             ChangeWebPage(selectedMember);
         }
 
@@ -68,6 +73,10 @@ namespace Sakamichi46Mobile.Nogizaka46
             }
             else if(tabIdx == 3)
             {
+                nogiWebMatome.Source = this.selectedMember.matomeUri[0];
+            }
+            else if(tabIdx == 4)
+            {
                 nogiWebGoods.Source = this.selectedMember.goodsUri;
             }
         }
@@ -88,6 +97,10 @@ namespace Sakamichi46Mobile.Nogizaka46
                 return nogiWikipedia;
             }
             else if (tabIdx == 3)
+            {
+                return nogiWebMatome;
+            }
+            else if (tabIdx == 4)
             {
                 return nogiWebGoods;
             }
