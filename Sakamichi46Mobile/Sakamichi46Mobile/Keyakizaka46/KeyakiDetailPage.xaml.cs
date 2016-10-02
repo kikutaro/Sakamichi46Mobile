@@ -15,11 +15,7 @@ namespace Sakamichi46Mobile.Keyakizaka46
         private KeyakiController keyakiCtrl;
         public Member selectedMember { get; set; }
 
-        public string keyakiOfficialBlog { get; set; }
-
-        public string keyakiMatome { get; set; }
-
-        public string keyakiOfficialGoods { get; set; }
+        public SakamichiUrl keyakiUrl;
 
         public KeyakiDetailPage()
         {
@@ -29,23 +25,22 @@ namespace Sakamichi46Mobile.Keyakizaka46
         public KeyakiDetailPage(KeyakiController keyakiCtrl, SakamichiUrl keyakiUrl) : this()
         {
             this.keyakiCtrl = keyakiCtrl;
+            this.keyakiUrl = keyakiUrl;
             ChangeWebPage(null, keyakiUrl);
         }
 
         private void InitWebPage()
         {
-            keyakiWebBlog.Source = keyakiOfficialBlog;
-            keyakiWebMatome.Source = keyakiMatome;
-            keyakiWebGoods.Source = keyakiOfficialGoods;
+            keyakiWebBlog.Source = keyakiUrl.OfficialBlogUrl;
+            keyakiWebMatome.Source = keyakiUrl.MatomeUrl;
+            keyakiWebGoods.Source = keyakiUrl.OfficialGoodsUrl;
             keyakiWebYouTube.Source = UrlConst.YOUTUBE + SakamichiConst.KEYAKIZAKA46;
             keyakiWikipedia.Source = UrlConst.WIKIPEDIA + SakamichiConst.KEYAKIZAKA46;
         }
 
         public void ChangeWebPage(Member selectedMember, SakamichiUrl keyakiUrl)
         {
-            this.keyakiOfficialBlog = keyakiOfficialBlog;
-            this.keyakiMatome = keyakiUrl.MatomeUrl;
-            this.keyakiOfficialGoods = keyakiOfficialGoods;
+            this.keyakiUrl = keyakiUrl;
             ChangeWebPage(selectedMember);
         }
 

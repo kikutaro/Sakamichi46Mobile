@@ -15,11 +15,7 @@ namespace Sakamichi46Mobile.Nogizaka46
         private NogiController nogiCtrl;
         public Member selectedMember { get; set; }
 
-        public string nogiOfficialBlog { get; set; }
-
-        public string nogiMatome { get; set; }
-        
-        public string nogiOfficialGoods { get; set; }
+        public SakamichiUrl nogiUrl;
 
         public NogiDetailPage()
         {
@@ -29,23 +25,22 @@ namespace Sakamichi46Mobile.Nogizaka46
         public NogiDetailPage(NogiController nogiCtrl, SakamichiUrl nogiUrl) : this()
         {
             this.nogiCtrl = nogiCtrl;
+            this.nogiUrl = nogiUrl;
             ChangeWebPage(null, nogiUrl);
         }
 
         private void InitWebPage()
         {
-            nogiWebBlog.Source = nogiOfficialBlog;
-            nogiWebMatome.Source = nogiMatome;
-            nogiWebGoods.Source = nogiOfficialGoods;
+            nogiWebBlog.Source = nogiUrl.OfficialBlogUrl;
+            nogiWebMatome.Source = nogiUrl.MatomeUrl;
+            nogiWebGoods.Source = nogiUrl.OfficialGoodsUrl;
             nogiWebYouTube.Source = UrlConst.YOUTUBE + SakamichiConst.NOGIZAKA46;
             nogiWikipedia.Source = UrlConst.WIKIPEDIA + SakamichiConst.NOGIZAKA46;
         }
 
         public void ChangeWebPage(Member selectedMember, SakamichiUrl nogiUrl)
         {
-            this.nogiOfficialBlog = nogiUrl.OfficialBlogUrl;
-            this.nogiMatome = nogiUrl.MatomeUrl;
-            this.nogiOfficialGoods = nogiUrl.OfficialGoodsUrl;
+            this.nogiUrl = nogiUrl;
             ChangeWebPage(selectedMember);
         }
 

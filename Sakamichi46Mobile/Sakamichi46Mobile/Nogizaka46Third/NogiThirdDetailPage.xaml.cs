@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sakamichi46Mobile.Constant;
 using Sakamichi46Mobile.Controller;
+using Sakamichi46Mobile.Model;
 using Xamarin.Forms;
 
 namespace Sakamichi46Mobile.Nogizaka46Third
@@ -14,33 +15,29 @@ namespace Sakamichi46Mobile.Nogizaka46Third
         private NogiController nogiCtrl;
         public Member selectedMember { get; set; }
 
-        public string nogiOfficialBlog { get; set; }
-        
-        public string nogiOfficialGoods { get; set; }
+        public SakamichiUrl nogiThirdUrl;
 
         public NogiThirdDetailPage()
         {
             InitializeComponent();
         }
 
-        public NogiThirdDetailPage(NogiController nogiCtrl, string nogiOfficialBlog, string nogiOfficialGoods) : this()
+        public NogiThirdDetailPage(NogiController nogiCtrl, SakamichiUrl nogiThirdUrl) : this()
         {
             this.nogiCtrl = nogiCtrl;
-            ChangeWebPage(null, nogiOfficialBlog, nogiOfficialGoods);
+            this.nogiThirdUrl = nogiThirdUrl;
+            ChangeWebPage(null, nogiThirdUrl);
         }
 
         private void InitWebPage()
         {
-            nogiThirdWebBlog.Source = nogiOfficialBlog;
-            //nogiThirdWebGoods.Source = nogiOfficialGoods;
+            nogiThirdWebBlog.Source = nogiThirdUrl.OfficialBlogUrl;
             nogiThirdWebYouTube.Source = UrlConst.YOUTUBE + SakamichiConst.NOGIZAKA46_THIRD;
-            nogiThirdWikipedia.Source = UrlConst.WIKIPEDIA + SakamichiConst.NOGIZAKA46_THIRD;
         }
 
-        public void ChangeWebPage(Member selectedMember, string nogiOfficialBlog, string nogiOfficialGoods)
+        public void ChangeWebPage(Member selectedMember, SakamichiUrl nogiThirdUrl)
         {
-            this.nogiOfficialBlog = nogiOfficialBlog;
-            this.nogiOfficialGoods = nogiOfficialGoods;
+            this.nogiThirdUrl = nogiThirdUrl;
             ChangeWebPage(selectedMember);
         }
 
@@ -72,14 +69,6 @@ namespace Sakamichi46Mobile.Nogizaka46Third
             {
                 nogiThirdWebYouTube.Source = UrlConst.YOUTUBE + this.selectedMember.name;
             }
-            else if(tabIdx == 2)
-            {
-                nogiThirdWikipedia.Source = UrlConst.WIKIPEDIA + this.selectedMember.name;
-            }
-            else if(tabIdx == 3)
-            {
-                //nogiThirdWebGoods.Source = this.selectedMember.goodsUri;
-            }
         }
 
         private WebView GetCurrentWebView()
@@ -93,14 +82,6 @@ namespace Sakamichi46Mobile.Nogizaka46Third
             {
                 return nogiThirdWebYouTube;
             }
-            else if (tabIdx == 2)
-            {
-                return nogiThirdWikipedia;
-            }
-            //else if (tabIdx == 3)
-            //{
-            //    return nogiThirdWebGoods;
-            //}
             return nogiThirdWebBlog;
         }
 

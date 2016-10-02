@@ -34,11 +34,11 @@
         </StackLayout>    
       </ContentPage.Content>
     </ContentPage>
+    <!-- Nogizaka46 3rd still doesn't have wikipedia.
     <ContentPage Title="Wikipedia">
       <ContentPage.Content>
         <StackLayout>
           <WebView x:Name="nogiThirdWikipedia" WidthRequest="1000" HeightRequest="1000" />
-          <!-- TODO will use ControlTemplate -->
           <StackLayout Orientation="Horizontal">
             <Button Text="戻る" BackgroundColor="#be86c8" HorizontalOptions="FillAndExpand"
                     Clicked="PageBack" />
@@ -48,6 +48,7 @@
         </StackLayout>    
       </ContentPage.Content>
     </ContentPage>
+    -->
     <!-- Nogizaka46 3rd doesn't have goods site.
     <ContentPage Title="Goods">
       <ContentPage.Content>

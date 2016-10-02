@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sakamichi46Mobile.Controller;
+using Sakamichi46Mobile.Model;
 using Xamarin.Forms;
 
 namespace Sakamichi46Mobile.Nogizaka46Third
@@ -17,11 +18,10 @@ namespace Sakamichi46Mobile.Nogizaka46Third
             InitializeComponent();
         }
 
-        public NogiThirdMasterDetailPage(NogiController nogiThirdCtrl, List<Member> member,
-            string nogiThirdOfficialBlog, string nogiThirdOfficialGoods) : this()
+        public NogiThirdMasterDetailPage(NogiController nogiThirdCtrl, List<Member> member, SakamichiUrl nogiThirdUrl) : this()
         {
             Master = new NogiThirdMasterPage();
-            Detail = new NogiThirdDetailPage(nogiThirdCtrl, nogiThirdOfficialBlog, nogiThirdOfficialGoods);
+            Detail = new NogiThirdDetailPage(nogiThirdCtrl, nogiThirdUrl);
 
             nogiThirdDetail = (NogiThirdDetailPage)Detail;
 
@@ -35,7 +35,7 @@ namespace Sakamichi46Mobile.Nogizaka46Third
 
             nogiThirdDetail.CurrentPageChanged += (o, e) =>
             {
-                nogiThirdDetail.ChangeWebPage(nogiThirdDetail.selectedMember, nogiThirdOfficialBlog, nogiThirdOfficialGoods);
+                nogiThirdDetail.ChangeWebPage(nogiThirdDetail.selectedMember, nogiThirdUrl);
             };
         }
 

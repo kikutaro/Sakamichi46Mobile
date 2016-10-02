@@ -46,7 +46,6 @@ namespace Sakamichi46Mobile
         private static List<Member> nogiThirdMember;
         private static string nogiThirdOfficialBlog;
         private static string nogiThirdMatome;
-        private static string nogiThirdOfficialGoods;
 
         private DiscographyPage discoPage;
 
@@ -127,7 +126,7 @@ namespace Sakamichi46Mobile
 
             btnNogi3rd.Clicked += (o, e) =>
             {
-                if (nogiThirdMember == null || string.IsNullOrEmpty(nogiThirdOfficialBlog) || string.IsNullOrEmpty(nogiThirdOfficialGoods))
+                if (nogiThirdMember == null || string.IsNullOrEmpty(nogiThirdOfficialBlog))
                 {
                     if (isOffiline)
                     {
@@ -139,7 +138,7 @@ namespace Sakamichi46Mobile
                     }
                     return;
                 }
-                nogiThirdPage = new NogiThirdMasterDetailPage(nogiThirdCtrl, nogiThirdMember, nogiThirdOfficialBlog, nogiThirdOfficialGoods);
+                nogiThirdPage = new NogiThirdMasterDetailPage(nogiThirdCtrl, nogiThirdMember, new SakamichiUrl { OfficialBlogUrl = nogiThirdOfficialBlog, MatomeUrl = nogiThirdMatome });
                 if (nogiThirdPage != null)
                 {
                     Navigation.PushModalAsync(nogiThirdPage);

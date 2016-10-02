@@ -16,11 +16,7 @@ namespace Sakamichi46Mobile.HiraganaKeyaki
 
         public Member selectedMember { get; set; }
 
-        public string hiraOfficialBlog { get; set; }
-
-        public string hiraMatome { get; set; }
-
-        public string hiraOfficialGoods { get; set; }
+        public SakamichiUrl hiraUrl;
 
         public HiraDetailPage()
         {
@@ -30,23 +26,22 @@ namespace Sakamichi46Mobile.HiraganaKeyaki
         public HiraDetailPage(HiraController hiraCtrl, SakamichiUrl hiraUrl) : this()
         {
             this.hiraCtrl = hiraCtrl;
+            this.hiraUrl = hiraUrl;
             ChangeWebPage(null, hiraUrl);
         }
 
         private void InitWebPage()
         {
-            hiraWebBlog.Source = hiraOfficialBlog;
-            hiraWebMatome.Source = hiraMatome;
-            hiraWebGoods.Source = hiraOfficialGoods;
+            hiraWebBlog.Source = hiraUrl.OfficialBlogUrl;
+            hiraWebMatome.Source = hiraUrl.MatomeUrl;
+            hiraWebGoods.Source = hiraUrl.OfficialGoodsUrl;
             hiraWebYouTube.Source = UrlConst.YOUTUBE + SakamichiConst.HIRAGANA_KEYAKI;
             hiraWikipedia.Source = UrlConst.WIKIPEDIA + SakamichiConst.HIRAGANA_KEYAKI;
         }
 
         public void ChangeWebPage(Member selectedMember, SakamichiUrl hiraUrl)
         {
-            this.hiraOfficialBlog = hiraOfficialBlog;
-            this.hiraMatome = hiraUrl.MatomeUrl;
-            this.hiraOfficialGoods = hiraOfficialGoods;
+            this.hiraUrl = hiraUrl;
             ChangeWebPage(selectedMember);
         }
 
