@@ -20,33 +20,33 @@ namespace Sakamichi46Mobile
 {
     public partial class Menu : CarouselPage
     {
-        private NogiMasterDetailPage nogiPage;
-        private NogiController nogiCtrl;
-        private List<Member> nogiMember;
-        private string nogiOfficialBlog;
-        private string nogiMatome;
-        private string nogiOfficialGoods;
+        private static NogiMasterDetailPage nogiPage;
+        private static NogiController nogiCtrl;
+        private static List<Member> nogiMember;
+        private static string nogiOfficialBlog;
+        private static string nogiMatome;
+        private static string nogiOfficialGoods;
 
-        private KeyakiMasterDetailPage keyakiPage;
-        private KeyakiController keyakiCtrl;
-        private List<Member> keyakiMember;
-        private string keyakiOfficialBlog;
-        private string keyakiMatome;
-        private string keyakiOfficialGoods;
+        private static KeyakiMasterDetailPage keyakiPage;
+        private static KeyakiController keyakiCtrl;
+        private static List<Member> keyakiMember;
+        private static string keyakiOfficialBlog;
+        private static string keyakiMatome;
+        private static string keyakiOfficialGoods;
 
-        private HiraMasterDetailPage hiraPage;
-        private HiraController hiraCtrl;
-        private List<Member> hiraMember;
-        private string hiraOfficialBlog;
-        private string hiraMatome;
-        private string hiraOfficialGoods;
+        private static HiraMasterDetailPage hiraPage;
+        private static HiraController hiraCtrl;
+        private static List<Member> hiraMember;
+        private static string hiraOfficialBlog;
+        private static string hiraMatome;
+        private static string hiraOfficialGoods;
 
-        private NogiThirdMasterDetailPage nogiThirdPage;
-        private NogiThirdController nogiThirdCtrl;
-        private List<Member> nogiThirdMember;
-        private string nogiThirdOfficialBlog;
-        private string nogiThirdMatome;
-        private string nogiThirdOfficialGoods;
+        private static NogiThirdMasterDetailPage nogiThirdPage;
+        private static NogiThirdController nogiThirdCtrl;
+        private static List<Member> nogiThirdMember;
+        private static string nogiThirdOfficialBlog;
+        private static string nogiThirdMatome;
+        private static string nogiThirdOfficialGoods;
 
         private DiscographyPage discoPage;
 
@@ -161,44 +161,55 @@ namespace Sakamichi46Mobile
         {
             try
             {
-                nogiCtrl = new NogiController(UrlConst.NOGI.AbsoluteUri);
-                nogiMember = await nogiCtrl.RunAsync();
-                Debug.WriteLine("end to download NogiMember List " + nogiMember.Count);
-                nogiOfficialBlog = await nogiCtrl.GetOfficialBlog();
-                Debug.WriteLine("end to download NogiOfficialBlog URL " + nogiOfficialBlog);
-                nogiMatome = await nogiCtrl.GetMatome();
-                Debug.WriteLine("end to download NogiMatome URL " + nogiMatome);
-                nogiOfficialGoods = await nogiCtrl.GetOfficialGoods();
-                Debug.WriteLine("end to download NogiOfficialGoods URL " + nogiOfficialGoods);
+                if (nogiCtrl == null)
+                {
+                    nogiCtrl = new NogiController(UrlConst.NOGI.AbsoluteUri);
+                    nogiMember = await nogiCtrl.RunAsync();
+                    Debug.WriteLine("end to download NogiMember List " + nogiMember.Count);
+                    nogiOfficialBlog = await nogiCtrl.GetOfficialBlog();
+                    Debug.WriteLine("end to download NogiOfficialBlog URL " + nogiOfficialBlog);
+                    nogiMatome = await nogiCtrl.GetMatome();
+                    Debug.WriteLine("end to download NogiMatome URL " + nogiMatome);
+                    nogiOfficialGoods = await nogiCtrl.GetOfficialGoods();
+                    Debug.WriteLine("end to download NogiOfficialGoods URL " + nogiOfficialGoods);
+                }
 
-                keyakiCtrl = new KeyakiController(UrlConst.KEYAKI.AbsoluteUri);
-                keyakiMember = await keyakiCtrl.RunAsync();
-                Debug.WriteLine("end to download KeyakiMember List " + keyakiMember.Count);
-                keyakiOfficialBlog = await keyakiCtrl.GetOfficialBlog();
-                Debug.WriteLine("end to download KeyakiOfficialBlog URL " + keyakiOfficialBlog);
-                keyakiMatome = await keyakiCtrl.GetMatome();
-                Debug.WriteLine("end to download KeyakiMatome URL " + keyakiMatome);
-                keyakiOfficialGoods = await keyakiCtrl.GetOfficialGoods();
-                Debug.WriteLine("end to download KeyakiOfficialGoods URL " + keyakiOfficialGoods);
+                if (keyakiCtrl == null)
+                {
+                    keyakiCtrl = new KeyakiController(UrlConst.KEYAKI.AbsoluteUri);
+                    keyakiMember = await keyakiCtrl.RunAsync();
+                    Debug.WriteLine("end to download KeyakiMember List " + keyakiMember.Count);
+                    keyakiOfficialBlog = await keyakiCtrl.GetOfficialBlog();
+                    Debug.WriteLine("end to download KeyakiOfficialBlog URL " + keyakiOfficialBlog);
+                    keyakiMatome = await keyakiCtrl.GetMatome();
+                    Debug.WriteLine("end to download KeyakiMatome URL " + keyakiMatome);
+                    keyakiOfficialGoods = await keyakiCtrl.GetOfficialGoods();
+                    Debug.WriteLine("end to download KeyakiOfficialGoods URL " + keyakiOfficialGoods);
+                }
 
-                hiraCtrl = new HiraController(UrlConst.HIRA.AbsoluteUri);
-                hiraMember = await hiraCtrl.RunAsync();
-                Debug.WriteLine("end to download HiraganaKeyakiMember List " + hiraMember.Count);
-                hiraOfficialBlog = await keyakiCtrl.GetOfficialBlog();
-                Debug.WriteLine("end to download HiraganaKeyakiOfficialBlog URL " + hiraOfficialBlog);
-                hiraMatome = await hiraCtrl.GetMatome();
-                Debug.WriteLine("end to download HiraganaKeyakiMatome URL " + hiraMatome);
-                hiraOfficialGoods = await keyakiCtrl.GetOfficialGoods();
-                Debug.WriteLine("end to download HiraganaKeyakiOfficialGoods URL " + hiraOfficialGoods);
+                if (hiraCtrl == null)
+                {
+                    hiraCtrl = new HiraController(UrlConst.HIRA.AbsoluteUri);
+                    hiraMember = await hiraCtrl.RunAsync();
+                    Debug.WriteLine("end to download HiraganaKeyakiMember List " + hiraMember.Count);
+                    hiraOfficialBlog = await keyakiCtrl.GetOfficialBlog();
+                    Debug.WriteLine("end to download HiraganaKeyakiOfficialBlog URL " + hiraOfficialBlog);
+                    hiraMatome = await hiraCtrl.GetMatome();
+                    Debug.WriteLine("end to download HiraganaKeyakiMatome URL " + hiraMatome);
+                    hiraOfficialGoods = await keyakiCtrl.GetOfficialGoods();
+                    Debug.WriteLine("end to download HiraganaKeyakiOfficialGoods URL " + hiraOfficialGoods);
+                }
 
-                nogiThirdCtrl = new NogiThirdController(UrlConst.NOGI3.AbsoluteUri);
-                nogiThirdMember = await nogiThirdCtrl.RunAsync();
-                Debug.WriteLine("end to download NogiThirdMember List " + nogiThirdMember.Count);
-                nogiThirdOfficialBlog = await nogiThirdCtrl.GetOfficialBlog();
-                Debug.WriteLine("end to download NogiThirdOfficialBlog URL " + nogiThirdOfficialBlog);
-                nogiThirdMatome = await nogiThirdCtrl.GetMatome();
-                Debug.WriteLine("end to download NogiThirdMatome URL " + nogiThirdMatome);
-
+                if (nogiThirdCtrl == null)
+                {
+                    nogiThirdCtrl = new NogiThirdController(UrlConst.NOGI3.AbsoluteUri);
+                    nogiThirdMember = await nogiThirdCtrl.RunAsync();
+                    Debug.WriteLine("end to download NogiThirdMember List " + nogiThirdMember.Count);
+                    nogiThirdOfficialBlog = await nogiThirdCtrl.GetOfficialBlog();
+                    Debug.WriteLine("end to download NogiThirdOfficialBlog URL " + nogiThirdOfficialBlog);
+                    nogiThirdMatome = await nogiThirdCtrl.GetMatome();
+                    Debug.WriteLine("end to download NogiThirdMatome URL " + nogiThirdMatome);
+                }
             }
             catch(WebException e)
             {
