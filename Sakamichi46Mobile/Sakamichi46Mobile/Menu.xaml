@@ -71,7 +71,7 @@
       <BoxView Color="Green" HeightRequest="2" />
 
       <Label Text="バージョン" TextColor="Gray" />
-      <Label Text="1.5" TextColor="Gray" />
+      <Label Text="2.0" TextColor="Gray" />
     </StackLayout>
   </ContentPage>
 </CarouselPage>
