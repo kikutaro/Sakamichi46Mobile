@@ -16,7 +16,7 @@
                     IsGroupingEnabled="true" ItemSelected="SelectMusic">
             <ListView.ItemTemplate>
               <DataTemplate>
-                <ImageCell Text="{Binding title}" ImageSource="{Binding coverPhotoUri}"/>
+                <ImageCell Text="{Binding title}" TextColor="Gray" ImageSource="{Binding coverPhotoUri}"/>
               </DataTemplate>
             </ListView.ItemTemplate>
           </ListView>
@@ -36,7 +36,7 @@
                     IsGroupingEnabled="true" ItemSelected="SelectMusic">
             <ListView.ItemTemplate>
               <DataTemplate>
-                <ImageCell Text="{Binding title}" ImageSource="{Binding coverPhotoUri}"/>
+                <ImageCell Text="{Binding title}" TextColor="Gray" ImageSource="{Binding coverPhotoUri}"/>
               </DataTemplate>
             </ListView.ItemTemplate>
           </ListView>
