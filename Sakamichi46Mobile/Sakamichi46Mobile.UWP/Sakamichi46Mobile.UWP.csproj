@@ -127,7 +127,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sakamichi46Mobile\Sakamichi46Mobile\Sakamichi46Mobile.csproj">
+    <ProjectReference Include="..\Sakamichi46Mobile\Sakamichi46Mobile.csproj">
       <Project>{8fe87d0e-c7e5-41fc-b8b7-c11380c4ccac}</Project>
       <Name>Sakamichi46Mobile</Name>
     </ProjectReference>
