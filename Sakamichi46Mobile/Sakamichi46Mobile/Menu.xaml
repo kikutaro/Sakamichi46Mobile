@@ -11,6 +11,7 @@
         <RowDefinition Height="120" />
         <RowDefinition Height="60" />
         <RowDefinition Height="60" />
+        <RowDefinition Height="60" />
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
@@ -45,11 +46,14 @@
             BackgroundColor="#a0d468"
             TextColor="White"
             Grid.Row="2" Grid.Column="2"/>
-      <!-- trial -->
       <Button x:Name="btnDiscography" 
               BackgroundColor="#FFA500" TextColor="White"
               Text="ディスコグラフィ/歌詞"
               Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
+      <Button x:Name="btnGraduated" 
+              BackgroundColor="#cc3333" TextColor="White"
+              Text="卒業生"
+              Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1" />
     </Grid>
   </ContentPage>
   <ContentPage>
@@ -71,7 +75,7 @@
       <BoxView Color="Green" HeightRequest="2" />
 
       <Label Text="バージョン" TextColor="Gray" />
-      <Label Text="2.0" TextColor="Gray" />
+      <Label Text="3.0" TextColor="Gray" />
     </StackLayout>
   </ContentPage>
 </CarouselPage>

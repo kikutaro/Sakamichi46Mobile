@@ -16,5 +16,6 @@ namespace Sakamichi46Mobile
         public string blogUri { get; set; }
         public string goodsUri { get; set; }
         public List<string> matomeUri { get; set; }
+        public string graduateDate { get; set; }
     }
 }

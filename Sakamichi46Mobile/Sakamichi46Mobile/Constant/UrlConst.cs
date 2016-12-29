@@ -20,6 +20,8 @@ namespace Sakamichi46Mobile.Constant
 
         public const string PROFILE = "profile";
 
+        public const string GRADUATED = "graduate";
+
         public const string BLOG = "blog/mobile";
 
         public const string MATOME = "matome";

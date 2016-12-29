@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sakamichi46Mobile.Graduate.GraduateMemberPage">
+  <ContentPage.Content>
+    <ListView x:Name="graduateMember" ItemSelected="SelectGraduateMember">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ImageCell Text="{Binding name}" ImageSource="{Binding profilePhotoUri}" 
+                     Detail="{Binding graduateDate}" />
+          <!--
+          <ViewCell>
+            <StackLayout Orientation="Vertical">
+              <StackLayout Orientation="Horizontal">
+                <Image Source="{Binding profilePhotoUri}" />
+                <Label Text="{Binding name}" TextColor="Black" />
+              </StackLayout>
+            </StackLayout>
+          </ViewCell>
+          -->
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </ContentPage.Content>
+</ContentPage>

@@ -23,6 +23,7 @@ namespace Sakamichi46Mobile
         private static NogiMasterDetailPage nogiPage;
         private static NogiController nogiCtrl;
         private static List<Member> nogiMember;
+        private static List<Member> nogiGraduatedMember;
         private static string nogiOfficialBlog;
         private static string nogiMatome;
         private static string nogiOfficialGoods;
@@ -80,6 +81,15 @@ namespace Sakamichi46Mobile
                 {
                     Navigation.PushModalAsync(nogiPage);
                 }
+            };
+
+            btnGraduated.Clicked += (o, e) =>
+            {
+                if (nogiGraduatedMember == null)
+                {
+
+                }
+                Navigation.PushModalAsync(new Graduate.GraduateMemberPage(nogiGraduatedMember));
             };
 
             btnKeyaki.Clicked += (o, e) =>
@@ -165,6 +175,8 @@ namespace Sakamichi46Mobile
                     nogiCtrl = new NogiController(UrlConst.NOGI.AbsoluteUri);
                     nogiMember = await nogiCtrl.RunAsync();
                     Debug.WriteLine("end to download NogiMember List " + nogiMember.Count);
+                    nogiGraduatedMember = await nogiCtrl.GetGraduatedMembers();
+                    Debug.WriteLine("end to download NogiGraduatedMember List " + nogiGraduatedMember.Count);
                     nogiOfficialBlog = await nogiCtrl.GetOfficialBlog();
                     Debug.WriteLine("end to download NogiOfficialBlog URL " + nogiOfficialBlog);
                     nogiMatome = await nogiCtrl.GetMatome();

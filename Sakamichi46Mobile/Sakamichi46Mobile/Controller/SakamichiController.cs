@@ -41,6 +41,30 @@ namespace Sakamichi46Mobile.Controller
             return member;
         }
 
+        public async Task<List<Member>> GetGraduatedMembers()
+        {
+            Uri graduateUrl = new Uri(baseUrl, UrlConst.GRADUATED);
+            //var response = await httpClient.GetAsync(profileUrl.AbsoluteUri);
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    var ret = await response.Content.ReadAsStringAsync();
+            //    member = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Member>>(ret);
+            //}
+            //return member;
+            return await GetMembers(graduateUrl);
+        }
+
+        private async Task<List<Member>> GetMembers(Uri uri)
+        {
+            var response = await httpClient.GetAsync(uri.AbsoluteUri);
+            if (response.IsSuccessStatusCode)
+            {
+                var ret = await response.Content.ReadAsStringAsync();
+                member = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Member>>(ret);
+            }
+            return member;
+        }
+
         public async Task<List<Music>> GetMusic()
         {
             List<Music> musics = new List<Music>();
