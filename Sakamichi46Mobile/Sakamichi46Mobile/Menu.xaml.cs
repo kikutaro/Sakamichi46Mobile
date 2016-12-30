@@ -25,6 +25,7 @@ namespace Sakamichi46Mobile
         private static List<Member> nogiMember;
         private static List<Member> nogiGraduatedMember;
         private static string nogiOfficialBlog;
+        private static string nogiTv;
         private static string nogiMatome;
         private static string nogiOfficialGoods;
 
@@ -32,6 +33,7 @@ namespace Sakamichi46Mobile
         private static KeyakiController keyakiCtrl;
         private static List<Member> keyakiMember;
         private static string keyakiOfficialBlog;
+        private static string keyakiTv;
         private static string keyakiMatome;
         private static string keyakiOfficialGoods;
 
@@ -76,7 +78,7 @@ namespace Sakamichi46Mobile
                     }
                     return;
                 }
-                nogiPage = new NogiMasterDetailPage(nogiCtrl, nogiMember, new SakamichiUrl { OfficialBlogUrl = nogiOfficialBlog, MatomeUrl = nogiMatome, OfficialGoodsUrl = nogiOfficialGoods });
+                nogiPage = new NogiMasterDetailPage(nogiCtrl, nogiMember, new SakamichiUrl { OfficialBlogUrl = nogiOfficialBlog, TvUrl = nogiTv, MatomeUrl = nogiMatome, OfficialGoodsUrl = nogiOfficialGoods });
                 if (nogiPage != null)
                 {
                     Navigation.PushModalAsync(nogiPage);
@@ -106,7 +108,7 @@ namespace Sakamichi46Mobile
                     }
                     return;
                 }
-                keyakiPage = new KeyakiMasterDetailPage(keyakiCtrl, keyakiMember, new SakamichiUrl { OfficialBlogUrl = keyakiOfficialBlog, MatomeUrl = keyakiMatome, OfficialGoodsUrl = keyakiOfficialGoods });
+                keyakiPage = new KeyakiMasterDetailPage(keyakiCtrl, keyakiMember, new SakamichiUrl { OfficialBlogUrl = keyakiOfficialBlog, TvUrl = keyakiTv, MatomeUrl = keyakiMatome, OfficialGoodsUrl = keyakiOfficialGoods });
                 if (keyakiPage != null)
                 {
                     Navigation.PushModalAsync(keyakiPage);
@@ -179,6 +181,8 @@ namespace Sakamichi46Mobile
                     Debug.WriteLine("end to download NogiGraduatedMember List " + nogiGraduatedMember.Count);
                     nogiOfficialBlog = await nogiCtrl.GetOfficialBlog();
                     Debug.WriteLine("end to download NogiOfficialBlog URL " + nogiOfficialBlog);
+                    nogiTv = await nogiCtrl.GetTv();
+                    Debug.WriteLine("end to download NogiTv URL " + nogiTv);
                     nogiMatome = await nogiCtrl.GetMatome();
                     Debug.WriteLine("end to download NogiMatome URL " + nogiMatome);
                     nogiOfficialGoods = await nogiCtrl.GetOfficialGoods();
@@ -192,6 +196,8 @@ namespace Sakamichi46Mobile
                     Debug.WriteLine("end to download KeyakiMember List " + keyakiMember.Count);
                     keyakiOfficialBlog = await keyakiCtrl.GetOfficialBlog();
                     Debug.WriteLine("end to download KeyakiOfficialBlog URL " + keyakiOfficialBlog);
+                    keyakiTv = await keyakiCtrl.GetTv();
+                    Debug.WriteLine("end to download KeyakiTv URL " + keyakiTv);
                     keyakiMatome = await keyakiCtrl.GetMatome();
                     Debug.WriteLine("end to download KeyakiMatome URL " + keyakiMatome);
                     keyakiOfficialGoods = await keyakiCtrl.GetOfficialGoods();

@@ -32,6 +32,20 @@
         </StackLayout>    
       </ContentPage.Content>
     </ContentPage>
+    <ContentPage Title="TV">
+      <ContentPage.Content>
+        <StackLayout>
+          <WebView x:Name="keyakiWebTv" WidthRequest="1000" HeightRequest="1000" />
+          <!-- TODO will use ControlTemplate -->
+          <StackLayout Orientation="Horizontal">
+            <Button Text="戻る" BackgroundColor="Green" HorizontalOptions="FillAndExpand"
+                    Clicked="PageBack" />
+            <Button Text="進む" BackgroundColor="Green" HorizontalOptions="FillAndExpand"
+                    Clicked="PageForward" />
+          </StackLayout>
+        </StackLayout>
+      </ContentPage.Content>
+    </ContentPage>
     <ContentPage Title="Wikipedia">
       <ContentPage.Content>
         <StackLayout>

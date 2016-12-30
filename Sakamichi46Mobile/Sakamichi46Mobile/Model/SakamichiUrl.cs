@@ -9,6 +9,7 @@ namespace Sakamichi46Mobile.Model
     public class SakamichiUrl
     {
         public string OfficialBlogUrl { get; set; }
+        public string TvUrl { get; set; }
         public string MatomeUrl { get; set; }
         public string OfficialGoodsUrl { get; set; }
     }

@@ -32,6 +32,7 @@ namespace Sakamichi46Mobile.Keyakizaka46
         private void InitWebPage()
         {
             keyakiWebBlog.Source = keyakiUrl.OfficialBlogUrl;
+            keyakiWebTv.Source = keyakiUrl.TvUrl;
             keyakiWebMatome.Source = keyakiUrl.MatomeUrl;
             keyakiWebGoods.Source = keyakiUrl.OfficialGoodsUrl;
             keyakiWebYouTube.Source = UrlConst.YOUTUBE + SakamichiConst.KEYAKIZAKA46;
@@ -63,13 +64,17 @@ namespace Sakamichi46Mobile.Keyakizaka46
             }
             else if (tabIdx == 2)
             {
-                keyakiWikipedia.Source = UrlConst.WIKIPEDIA + this.selectedMember.name;
+                keyakiWebTv.Source = this.selectedMember.tvUri;
             }
             else if (tabIdx == 3)
             {
-                keyakiWebMatome.Source = this.selectedMember.matomeUri[0];
+                keyakiWikipedia.Source = UrlConst.WIKIPEDIA + this.selectedMember.name;
             }
             else if (tabIdx == 4)
+            {
+                keyakiWebMatome.Source = this.selectedMember.matomeUri[0];
+            }
+            else if (tabIdx == 5)
             {
                 keyakiWebGoods.Source = this.selectedMember.goodsUri;
             }
@@ -88,13 +93,17 @@ namespace Sakamichi46Mobile.Keyakizaka46
             }
             else if (tabIdx == 2)
             {
-                return keyakiWikipedia;
+                return keyakiWebTv;
             }
             else if (tabIdx == 3)
             {
-                return keyakiWebMatome;
+                return keyakiWikipedia;
             }
             else if (tabIdx == 4)
+            {
+                return keyakiWebMatome;
+            }
+            else if (tabIdx == 5)
             {
                 return keyakiWebGoods;
             }

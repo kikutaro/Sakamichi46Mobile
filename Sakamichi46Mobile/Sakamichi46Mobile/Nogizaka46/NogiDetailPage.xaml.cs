@@ -32,6 +32,7 @@ namespace Sakamichi46Mobile.Nogizaka46
         private void InitWebPage()
         {
             nogiWebBlog.Source = nogiUrl.OfficialBlogUrl;
+            nogiWebTv.Source = nogiUrl.TvUrl;
             nogiWebMatome.Source = nogiUrl.MatomeUrl;
             nogiWebGoods.Source = nogiUrl.OfficialGoodsUrl;
             nogiWebYouTube.Source = UrlConst.YOUTUBE + SakamichiConst.NOGIZAKA46;
@@ -64,13 +65,17 @@ namespace Sakamichi46Mobile.Nogizaka46
             }
             else if(tabIdx == 2)
             {
-                nogiWikipedia.Source = UrlConst.WIKIPEDIA + this.selectedMember.name;
+                nogiWebTv.Source = this.selectedMember.tvUri;
             }
             else if(tabIdx == 3)
             {
-                nogiWebMatome.Source = this.selectedMember.matomeUri[0];
+                nogiWikipedia.Source = UrlConst.WIKIPEDIA + this.selectedMember.name;
             }
             else if(tabIdx == 4)
+            {
+                nogiWebMatome.Source = this.selectedMember.matomeUri[0];
+            }
+            else if(tabIdx == 5)
             {
                 nogiWebGoods.Source = this.selectedMember.goodsUri;
             }
@@ -89,13 +94,17 @@ namespace Sakamichi46Mobile.Nogizaka46
             }
             else if (tabIdx == 2)
             {
-                return nogiWikipedia;
+                return nogiWebTv;
             }
             else if (tabIdx == 3)
             {
-                return nogiWebMatome;
+                return nogiWikipedia;
             }
             else if (tabIdx == 4)
+            {
+                return nogiWebMatome;
+            }
+            else if (tabIdx == 5)
             {
                 return nogiWebGoods;
             }

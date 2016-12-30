@@ -31,27 +31,12 @@ namespace Sakamichi46Mobile.Controller
 
         public async Task<List<Member>> RunAsync()
         {
-            Uri profileUrl = new Uri(baseUrl, UrlConst.PROFILE);
-            var response = await httpClient.GetAsync(profileUrl.AbsoluteUri);
-            if (response.IsSuccessStatusCode)
-            {
-                var ret = await response.Content.ReadAsStringAsync();
-                member = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Member>>(ret);
-            }
-            return member;
+            return await GetMembers(new Uri(baseUrl, UrlConst.PROFILE));
         }
 
         public async Task<List<Member>> GetGraduatedMembers()
         {
-            Uri graduateUrl = new Uri(baseUrl, UrlConst.GRADUATED);
-            //var response = await httpClient.GetAsync(profileUrl.AbsoluteUri);
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    var ret = await response.Content.ReadAsStringAsync();
-            //    member = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Member>>(ret);
-            //}
-            //return member;
-            return await GetMembers(graduateUrl);
+            return await GetMembers(new Uri(baseUrl, UrlConst.GRADUATED));
         }
 
         private async Task<List<Member>> GetMembers(Uri uri)
@@ -81,6 +66,13 @@ namespace Sakamichi46Mobile.Controller
         public async Task<string> GetOfficialBlog()
         {
             Uri blogUrl = new Uri(baseUrl, UrlConst.BLOG);
+            var response = await httpClient.GetAsync(blogUrl.AbsoluteUri);
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> GetTv()
+        {
+            Uri blogUrl = new Uri(baseUrl, UrlConst.TV);
             var response = await httpClient.GetAsync(blogUrl.AbsoluteUri);
             return await response.Content.ReadAsStringAsync();
         }

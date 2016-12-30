@@ -26,6 +26,8 @@ namespace Sakamichi46Mobile.Constant
 
         public const string MATOME = "matome";
 
+        public const string TV = "tv";
+
         public const string GOODS = "goods/mobile";
 
         public const string MUSIC = "music";
