@@ -89,7 +89,15 @@ namespace Sakamichi46Mobile
             {
                 if (nogiGraduatedMember == null)
                 {
-
+                    if (isOffiline)
+                    {
+                        DisplayAlert(string.Empty, Message.NETWORK_DISCONNECTION, Message.OK);
+                    }
+                    else
+                    {
+                        DisplayAlert(string.Empty, Message.NOW_DOWNLOADING, Message.OK);
+                    }
+                    return;
                 }
                 Navigation.PushModalAsync(new Graduate.GraduateMemberPage(nogiGraduatedMember));
             };
