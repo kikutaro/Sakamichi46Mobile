@@ -19,7 +19,7 @@ namespace Sakamichi46Mobile.Discography
         private List<Music> nogiMusicList = new List<Music>();
         private List<Music> keyaMusicList = new List<Music>();
 
-        public DiscographyPage(NogiController nogiCtrl, KeyakiController keyaCtrl)
+        public DiscographyPage(NogiController nogiCtrl, KeyakiController keyaCtrl, List<Music> nogiMusicList, List<Music> keyaMusicList)
         {
             InitializeComponent();
 
@@ -28,51 +28,18 @@ namespace Sakamichi46Mobile.Discography
             keyaMusicCollection = new ObservableCollection<MusicCategory>();
             KeyakiMusics.ItemsSource = keyaMusicCollection;
 
-            Task<List<Music>> nogiMusics = GetAsyncDiscography(nogiCtrl);
-            Task<List<Music>> keyaMusics = GetAsyncDiscography(keyaCtrl);
+            this.nogiMusicList = nogiMusicList;
+            this.keyaMusicList = keyaMusicList;
 
-            InitEvent(nogiCtrl, nogiMusicCollection, searchNogiMusic, NogizakaMusics, nogiMusics);
-            InitEvent(keyaCtrl, keyaMusicCollection, searchKeyaMusic, KeyakiMusics, keyaMusics);
+            InitEvent(nogiCtrl, nogiMusicCollection, searchNogiMusic);
+            InitEvent(keyaCtrl, keyaMusicCollection, searchKeyaMusic);
 
-            if (nogiMusics.IsCompleted)
-            {
-                nogiMusicList = nogiMusics.Result;
-                ViewDiscography(nogiCtrl, nogiMusicCollection, nogiMusicList);
-            }
-
-            if(keyaMusics.IsCompleted)
-            {
-                keyaMusicList = keyaMusics.Result;
-                ViewDiscography(keyaCtrl, keyaMusicCollection, keyaMusicList);
-            }
+            ViewDiscography(nogiCtrl, nogiMusicCollection, this.nogiMusicList);
+            ViewDiscography(keyaCtrl, keyaMusicCollection, this.keyaMusicList);
         }
 
-        private void UpdateMusicList(SakamichiController sakaCtrl, ObservableCollection<MusicCategory> musicCollection, Task<List<Music>> sakaMusics)
+        private void InitEvent(SakamichiController sakaCtrl, ObservableCollection<MusicCategory> musicCollection, SearchBar sakaSearch)
         {
-            if (sakaMusics.IsCompleted)
-            {
-                if(Children.IndexOf(CurrentPage) == 0)
-                {
-                    nogiMusicList = sakaMusics.Result;
-                }
-                else if(Children.IndexOf(CurrentPage) == 1)
-                {
-                    keyaMusicList = sakaMusics.Result;
-                }
-                ViewDiscography(sakaCtrl, musicCollection, sakaMusics.Result);
-            }
-        }
-
-        private void InitEvent(SakamichiController sakaCtrl, ObservableCollection<MusicCategory> musicCollection, SearchBar sakaSearch, ListView sakaListView, Task<List<Music>> sakaMusics)
-        {
-            sakaListView.Refreshing += async (sender, e) =>
-            {
-                ViewDiscography(sakaCtrl, musicCollection, await GetAsyncDiscography(sakaCtrl));
-                sakaListView.IsRefreshing = false;
-
-                UpdateMusicList(sakaCtrl, musicCollection, sakaMusics);
-            };
-
             sakaSearch.TextChanged += (sender, e) =>
             {
                 if (!string.IsNullOrEmpty(sakaSearch.Text))

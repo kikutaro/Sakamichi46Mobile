@@ -28,6 +28,7 @@ namespace Sakamichi46Mobile
         private static string nogiTv;
         private static string nogiMatome;
         private static string nogiOfficialGoods;
+        private static List<Music> nogiMusic;
 
         private static KeyakiMasterDetailPage keyakiPage;
         private static KeyakiController keyakiCtrl;
@@ -36,6 +37,7 @@ namespace Sakamichi46Mobile
         private static string keyakiTv;
         private static string keyakiMatome;
         private static string keyakiOfficialGoods;
+        private static List<Music> keyakiMusic;
 
         private static HiraMasterDetailPage hiraPage;
         private static HiraController hiraCtrl;
@@ -50,17 +52,29 @@ namespace Sakamichi46Mobile
         private static string nogiThirdOfficialBlog;
         private static string nogiThirdMatome;
 
-        private DiscographyPage discoPage;
+        private static DiscographyPage discoPage;
 
         private bool isOffiline;
 
         public Menu()
         {
             InitializeComponent();
-
+            
             btnDiscography.Clicked += (o, e) =>
             {
-                discoPage = new DiscographyPage(nogiCtrl, keyakiCtrl);
+                if(nogiMusic == null || keyakiMusic == null)
+                {
+                    if (isOffiline)
+                    {
+                        DisplayAlert(string.Empty, Message.NETWORK_DISCONNECTION, Message.OK);
+                    }
+                    else
+                    {
+                        DisplayAlert(string.Empty, Message.NOW_DOWNLOADING, Message.OK);
+                    }
+                    return;
+                }
+                discoPage = new DiscographyPage(nogiCtrl, keyakiCtrl, nogiMusic, keyakiMusic);
                 Navigation.PushModalAsync(discoPage);
             };
 
@@ -195,6 +209,8 @@ namespace Sakamichi46Mobile
                     Debug.WriteLine("end to download NogiMatome URL " + nogiMatome);
                     nogiOfficialGoods = await nogiCtrl.GetOfficialGoods();
                     Debug.WriteLine("end to download NogiOfficialGoods URL " + nogiOfficialGoods);
+                    nogiMusic = await nogiCtrl.GetMusic();
+                    Debug.WriteLine("end to download NogiMusic List " + nogiMusic.Count);
                 }
 
                 if (keyakiCtrl == null)
@@ -210,6 +226,8 @@ namespace Sakamichi46Mobile
                     Debug.WriteLine("end to download KeyakiMatome URL " + keyakiMatome);
                     keyakiOfficialGoods = await keyakiCtrl.GetOfficialGoods();
                     Debug.WriteLine("end to download KeyakiOfficialGoods URL " + keyakiOfficialGoods);
+                    keyakiMusic = await keyakiCtrl.GetMusic();
+                    Debug.WriteLine("end to download KeyakiMusic List " + keyakiMusic.Count);
                 }
 
                 if (hiraCtrl == null)
@@ -234,6 +252,11 @@ namespace Sakamichi46Mobile
                     Debug.WriteLine("end to download NogiThirdOfficialBlog URL " + nogiThirdOfficialBlog);
                     nogiThirdMatome = await nogiThirdCtrl.GetMatome();
                     Debug.WriteLine("end to download NogiThirdMatome URL " + nogiThirdMatome);
+                }
+
+                if (discoPage == null)
+                {
+                    discoPage = new DiscographyPage(nogiCtrl, keyakiCtrl, nogiMusic, keyakiMusic);
                 }
             }
             catch(WebException e)
